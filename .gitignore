@@ -1,0 +1,8 @@
+a.out
+miniRT
+.DS_Store
+.vscode
+.*.swp
+**/*.o
+*.dSYM
+*.a
