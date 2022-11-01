@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.h                                            :+:      :+:    :+:   */
+/*   canvas.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 16:57:45 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/01 18:21:40 by hhamza           ###   ########.fr       */
+/*   Created: 2022/11/01 17:15:41 by hhamza            #+#    #+#             */
+/*   Updated: 2022/11/01 18:43:00 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UTILS_H
-# define UTILS_H
+#ifndef CANVAS_H
+# define CANVAS_H
 
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <string.h>
-# include <math.h>
-# include <pthread.h>
-# include <stdbool.h>
-# include "MLX42/MLX42.h"
-# include "libft.h"
+# include "utils.h"
+# include "color.h"
 
-# define EPSILON 0.00001f
+typedef struct s_canvas
+{
+	uint16_t	width;
+	uint16_t	height;
+	t_color		**data;
+}				t_canvas;
 
-bool	float_eq(float a, float b);
+t_canvas	canvas(uint16_t width, uint16_t height);
+void		canvas_destroy(t_canvas *canvas);
+
+void		canvas_export_ppm(t_canvas canvas, char const *filename);
 
 #endif
