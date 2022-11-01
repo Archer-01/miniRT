@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 16:57:45 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/01 18:21:40 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/01 20:58:29 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@
 # define EPSILON 0.00001f
 
 bool	float_eq(float a, float b);
+void	float_swap(float *a, float *b);
 
 #endif
