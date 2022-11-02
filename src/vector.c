@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:02:46 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/01 17:08:12 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/02 17:48:17 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,9 @@ t_tuple	tuple_mult(t_tuple a, float b)
 	return (c);
 }
 
-t_tuple	tuple_dot(t_tuple a, t_tuple b)
+float	tuple_dot(t_tuple a, t_tuple b)
 {
-	t_tuple	c;
-
-	c.x = a.x * b.x;
-	c.y = a.y * b.y;
-	c.z = a.z * b.z;
-	c.w = a.w * b.w;
-	return (c);
+	return (a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w);
 }
 
 t_tuple	tuple_cross(t_tuple a, t_tuple b)

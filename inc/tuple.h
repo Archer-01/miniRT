@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 16:50:42 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/01 17:08:43 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/02 17:48:25 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_tuple	tuple_add(t_tuple a, t_tuple b);
 t_tuple	tuple_sub(t_tuple a, t_tuple b);
 t_tuple	tuple_neg(t_tuple a);
 t_tuple	tuple_mult(t_tuple a, float b);
-t_tuple	tuple_dot(t_tuple a, t_tuple b);
+float	tuple_dot(t_tuple a, t_tuple b);
 t_tuple	tuple_cross(t_tuple a, t_tuple b);
 float	tuple_magnitude(t_tuple a);
 t_tuple	tuple_normalize(t_tuple a);
