@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shape.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:14:15 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/02 19:15:48 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/02 20:29:47 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,23 @@
 # include "tuple.h"
 # include "intersections.h"
 
+typedef struct s_intersections	t_intersections;
+
 typedef struct s_shape
 {
 	t_matrix		transformation;
+	t_matrix		inverse_transformation;
+	bool			is_inversed;
 	t_material		material;
 	t_intersections	(*intersect)(struct s_shape *self, t_ray ray);
 	t_tuple			(*normal_at)(struct s_shape *self, t_tuple point);
+	float			min;
+	float			max;
 }				t_shape;
 
-t_shape	shape(void);
+t_shape			shape(void);
+t_matrix		shape_inverse_transform(t_shape *shape);
+void			add_transformation(t_shape *shape, t_matrix transformation);
 
 t_intersections	intersect_sphere(t_shape *self, t_ray ray);
 t_intersections	intersect_cylinder(t_shape *self, t_ray ray);

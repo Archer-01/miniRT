@@ -30,14 +30,19 @@ OBJS	:= $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 LIBS	:= $(LIB_DIR)/MLX42/libmlx42.a $(LIB_DIR)/libft/libft.a
 
 # ***************************** Main Dependencies ******************************
-tuple_INC					:= tuple.h
-vector_INC					:= tuple.h
-color_INC					:= color.h
-canvas_INC					:= canvas.h
-matrix_INC					:= matrix.h
-matrix_inverse_INC			:= matrix.h
-matrix_transformations_INC	:= matrix.h
-ray_INC						:= ray.h
+tuple_INC					:= tuple.h utils.h
+vector_INC					:= tuple.h utils.h
+color_INC					:= color.h utils.h
+canvas_INC					:= canvas.h utils.h
+matrix_INC					:= matrix.h utils.h
+matrix_inverse_INC			:= matrix.h utils.h
+matrix_transformations_INC	:= matrix.h utils.h
+ray_INC						:= ray.h utils.h
+intersection_INC			:= intersection.h utils.h
+intersections_INC			:= intersections.h utils.h
+material_INC				:= material.h utils.h
+normal_at_INC				:= shape.h utils.h
+shape_INC					:= shape.h utils.h
 
 # ****************************** Make Arguments ********************************
 ifdef DEBUG
