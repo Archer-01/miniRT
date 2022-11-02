@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tuple.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:00:34 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/01 17:02:59 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/02 20:24:19 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_tuple	tuple_sub(t_tuple a, t_tuple b)
 	return (c);
 }
 
-t_tuple	tuple_negate(t_tuple a)
+t_tuple	tuple_neg(t_tuple a)
 {
 	t_tuple	b;
 

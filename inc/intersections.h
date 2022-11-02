@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersections.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:52:18 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/02 18:08:35 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/02 20:06:04 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "utils.h"
 # include "intersection.h"
+
+typedef struct s_intersection	t_intersection;
 
 typedef struct s_intersections
 {

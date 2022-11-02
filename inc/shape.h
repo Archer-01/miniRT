@@ -34,9 +34,9 @@ t_intersections	intersect_cylinder(t_shape *self, t_ray ray);
 t_intersections	intersect_plane(t_shape *self, t_ray ray);
 t_intersections	interesect_cone(t_shape *self, t_ray ray);
 
-t_tuple	normal_at_sphere(t_shape *self, t_tuple point);
-t_tuple	normal_at_cylinder(t_shape *self, t_tuple point);
-t_tuple	normal_at_plane(t_shape *self, t_tuple point);
-t_tuple	normal_at_cone(t_shape *self, t_tuple point);
+t_tuple			normal_at_sphere(t_shape *self, t_tuple point);
+t_tuple			normal_at_cylinder(t_shape *self, t_tuple point);
+t_tuple			normal_at_plane(t_shape *self, t_tuple point);
+t_tuple			normal_at_cone(t_shape *self, t_tuple point);
 
 #endif

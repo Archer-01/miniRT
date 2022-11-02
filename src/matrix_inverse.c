@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_inverse.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 21:17:28 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/01 21:19:27 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/02 20:07:27 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,12 @@ static void	matrix_nullify_non_pivot(t_matrix *m, t_matrix *result, uint8_t col)
 	}
 }
 
-t_matrix	matrix_inverse(t_matrix const *mat)
+t_matrix	matrix_inverse(t_matrix m)
 {
-	t_matrix	m;
 	t_matrix	result;
 	uint8_t		col;
 	uint8_t		row;
 
-	m = *mat;
 	result = matrix();
 	col = -1;
 	while (++col < 4)

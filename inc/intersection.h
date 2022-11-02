@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersection.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:30:42 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/02 17:50:04 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/02 20:16:54 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "shape.h"
 # include "tuple.h"
+
+typedef struct s_shape	t_shape;
 
 typedef struct s_computations
 {
