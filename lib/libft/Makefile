@@ -112,4 +112,4 @@ fclean:	clean
 re:	fclean all
 
 .PHONY:	all clean fclean re
-.SILENT: all clean fclean re $(NAME) $(OBJS)
+.SILENT: all clean fclean re $(NAME) $(addprefix $(OBJS_DIR)/, $(OBJS))
