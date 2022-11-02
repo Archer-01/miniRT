@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 16:57:45 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/01 20:58:29 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/02 16:48:52 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@
 
 bool	float_eq(float a, float b);
 void	float_swap(float *a, float *b);
+
+float	deg_to_rad(float deg);
 
 #endif

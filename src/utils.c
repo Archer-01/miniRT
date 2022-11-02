@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:09:26 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/01 20:58:44 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/02 16:49:04 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,9 @@ void	float_swap(float *a, float *b)
 	tmp = *a;
 	*a = *b;
 	*b = tmp;
+}
+
+float	deg_to_rad(float deg)
+{
+	return (deg * M_PI / 180);
 }
