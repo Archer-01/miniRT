@@ -37,6 +37,7 @@ canvas_INC					:= canvas.h
 matrix_INC					:= matrix.h
 matrix_inverse_INC			:= matrix.h
 matrix_transformations_INC	:= matrix.h
+ray_INC						:= ray.h
 
 # ****************************** Make Arguments ********************************
 ifdef DEBUG

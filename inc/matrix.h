@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 18:44:26 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/02 16:48:22 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/02 17:07:23 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MATRIX_H
 
 # include "utils.h"
+# include "tuple.h"
 
 typedef struct s_matrix
 {
@@ -23,6 +24,7 @@ typedef struct s_matrix
 t_matrix	matrix(void);
 
 t_matrix	matrix_mult(t_matrix const *m1, t_matrix const *m2);
+t_tuple		matrix_mult_tuple(t_matrix const *m, t_tuple const *t);
 t_matrix	matrix_transpose(t_matrix const *m);
 t_matrix	matrix_inverse(t_matrix const *mat);
 

@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 21:15:27 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/01 21:17:44 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/02 17:10:53 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,31 @@ t_matrix	matrix_mult(t_matrix const *m1, t_matrix const *m2)
 		i++;
 	}
 	return (result);
+}
+
+t_tuple	matrix_mult_tuple(t_matrix const *m, t_tuple const *t)
+{
+	t_tuple	res;
+	uint8_t	i;
+	uint8_t	j;
+
+	res.x = m->data[0][0] * t->x \
+		+ m->data[0][1] * t->y \
+		+ m->data[0][2] * t->z \
+		+ m->data[0][3] * t->w;
+	res.y = m->data[1][0] * t->x \
+		+ m->data[1][1] * t->y \
+		+ m->data[1][2] * t->z \
+		+ m->data[1][3] * t->w;
+	res.z = m->data[2][0] * t->x \
+		+ m->data[2][1] * t->y \
+		+ m->data[2][2] * t->z \
+		+ m->data[2][3] * t->w;
+	res.w = m->data[3][0] * t->x \
+		+ m->data[3][1] * t->y \
+		+ m->data[3][2] * t->z \
+		+ m->data[3][3] * t->w;
+	return (res);
 }
 
 t_matrix	matrix_transpose(t_matrix const *m)
