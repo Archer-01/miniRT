@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:18:03 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/02 17:23:35 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/03 21:33:00 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include "utils.h"
 # include "color.h"
+# include "pattern.h"
+# include "light.h"
+
+typedef struct s_computations	t_computations;
 
 typedef struct s_material
 {
@@ -22,10 +26,12 @@ typedef struct s_material
 	float		diffuse;
 	float		specular;
 	float		shininess;
-	// TODO: Add pattern
+	t_pattern	pattern;
+	bool		has_pattern;
 }				t_material;
 
 t_material		material(void);
-// TODO: Add lighting
+t_color			lighting(t_light light, t_computations comps, bool shadowed, \
+	t_color ambient);
 
 #endif

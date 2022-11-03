@@ -6,11 +6,12 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 19:36:45 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/03 20:29:08 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/03 21:31:56 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pattern.h"
+#include "shape.h"
 
 t_color	color_at_checker(t_pattern pattern, t_shape *shape, t_tuple point)
 {

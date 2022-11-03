@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 19:13:25 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/03 20:35:53 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/03 21:32:24 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define PATTERN_H
 
 # include "color.h"
-# include "shape.h"
 # include "canvas.h"
+# include "tuple.h"
 
 typedef struct s_uv
 {

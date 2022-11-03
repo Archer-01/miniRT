@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:13:57 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/01 17:15:05 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/03 21:09:34 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,15 @@ t_color	color_mult(t_color c, float f)
 	res.red = c.red * f;
 	res.green = c.green * f;
 	res.blue = c.blue * f;
+	return (res);
+}
+
+t_color	color_mult_color(t_color c1, t_color c2)
+{
+	t_color	res;
+
+	res.red = c1.red * c2.red;
+	res.green = c1.green * c2.green;
+	res.blue = c1.blue * c2.blue;
 	return (res);
 }

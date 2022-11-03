@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:14:15 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/03 15:47:37 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/03 21:30:39 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 typedef struct s_intersections	t_intersections;
 typedef struct s_shape			t_shape;
+typedef struct s_material		t_material;
 
 typedef t_intersections			(*t_intersect_fun)(t_shape *, t_ray);
 typedef t_tuple					(*t_normal_fun)(t_shape *, t_tuple);
