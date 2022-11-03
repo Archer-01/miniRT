@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 20:36:59 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/02 20:56:59 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/03 14:18:18 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_intersections	intersect_sphere(t_shape *self, t_ray ray)
 {
 	t_intersections	xs;
 	t_ray			ray_object_space;
-	t_tuple		sphere_to_ray;
+	t_tuple			sphere_to_ray;
 	float			abc[3];
 	float			dlta;
 
@@ -48,33 +48,30 @@ t_intersections	intersect_plane(t_shape *self, t_ray ray)
 	return (xs);
 }
 
-t_intersections	intersect_cylinder(t_shape *self, t_ray ray)
+t_intersections	intersect_cylinder(t_shape *self, t_ray r)
 {
 	t_intersections	xs;
-	t_ray			ray_object_space;
 	float			abc[3];
 	float			dlta;
 	float			ty[2];
-	
-	ray_object_space = ray_transform(ray, shape_inverse_transform(self));
-	abc[0] = ray_object_space.direction.x * ray_object_space.direction.x \
-		+ ray_object_space.direction.z * ray_object_space.direction.z;
+
+	r = ray_transform(r, shape_inverse_transform(self));
+	abc[0] = r.direction.x * r.direction.x \
+		+ r.direction.z * r.direction.z;
 	if (float_eq(abc[0], 0))
 		return (intersections());
-	abc[1] = 2 * ray_object_space.origin.x * ray_object_space.direction.x \
-		+ 2 * ray_object_space.origin.z * ray_object_space.direction.z;
-	abc[2] = ray_object_space.origin.x * ray_object_space.origin.x \
-		+ ray_object_space.origin.z * ray_object_space.origin.z - 1;
+	abc[1] = 2 * r.origin.x * r.direction.x + 2 * r.origin.z * r.direction.z;
+	abc[2] = r.origin.x * r.origin.x + r.origin.z * r.origin.z - 1;
 	dlta = abc[1] * abc[1] - 4 * abc[0] * abc[2];
 	if (dlta < 0)
 		return (intersections());
 	dlta = sqrt(dlta);
 	ty[0] = (-abc[1] - dlta) / (2 * abc[0]);
-	ty[1] = ray_object_space.origin.y + ty[0] * ray_object_space.direction.y;
+	ty[1] = r.origin.y + ty[0] * r.direction.y;
 	if (ty[1] >= self->min && ty[1] <= self->max)
 		intersections_add(&xs, intersection(ty[0], self));
 	ty[0] = (-abc[1] + dlta) / (2 * abc[0]);
-	ty[1] = ray_object_space.origin.y + ty[0] * ray_object_space.direction.y;
+	ty[1] = r.origin.y + ty[0] * r.direction.y;
 	if (ty[1] >= self->min && ty[1] <= self->max)
 		intersections_add(&xs, intersection(ty[0], self));
 	return (xs);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   normal_at.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 19:52:24 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/02 20:22:44 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/03 14:15:55 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ t_tuple	normal_at_sphere(t_shape *sphere, t_tuple world_point)
 
 t_tuple	normal_at_plane(t_shape *plane, t_tuple world_point)
 {
-	t_tuple		world_normal;
+	t_tuple		world_n;
 	t_matrix	inverse;
 
 	(void) world_point;
 	inverse = shape_inverse_transform(plane);
-	world_normal = matrix_mult_tuple(matrix_transpose(inverse), vector(0, 1, 0));
+	world_n = matrix_mult_tuple(matrix_transpose(inverse), vector(0, 1, 0));
 	return (vector(0, 1, 0));
 }
 
@@ -77,9 +77,11 @@ t_tuple	normal_at_cone(t_shape *cone, t_tuple world_point)
 	inverse = shape_inverse_transform(cone);
 	object_point = matrix_mult_tuple(inverse, world_point);
 	dist = object_point.x * object_point.x + object_point.z * object_point.z;
-	if (dist < object_point.y * object_point.y && object_point.y >= cone->max - EPSILON)
+	if (dist < object_point.y * object_point.y \
+		&& object_point.y >= cone->max - EPSILON)
 		object_normal = vector(0, 1, 0);
-	else if (dist < object_point.y * object_point.y && object_point.y <= cone->min - EPSILON)
+	else if (dist < object_point.y * object_point.y \
+		&& object_point.y <= cone->min - EPSILON)
 		object_normal = vector(0, -1, 0);
 	else
 	{

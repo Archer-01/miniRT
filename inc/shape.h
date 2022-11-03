@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shape.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:14:15 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/02 20:29:47 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/03 15:47:37 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # include "intersections.h"
 
 typedef struct s_intersections	t_intersections;
+typedef struct s_shape			t_shape;
+
+typedef t_intersections			(*t_intersect_fun)(t_shape *, t_ray);
+typedef t_tuple					(*t_normal_fun)(t_shape *, t_tuple);
 
 typedef struct s_shape
 {
@@ -27,8 +31,8 @@ typedef struct s_shape
 	t_matrix		inverse_transformation;
 	bool			is_inversed;
 	t_material		material;
-	t_intersections	(*intersect)(struct s_shape *self, t_ray ray);
-	t_tuple			(*normal_at)(struct s_shape *self, t_tuple point);
+	t_intersect_fun	intersect;
+	t_normal_fun	normal_at;
 	float			min;
 	float			max;
 }				t_shape;
