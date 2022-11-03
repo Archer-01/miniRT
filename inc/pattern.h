@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 19:13:25 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/03 20:32:48 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/03 20:35:53 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,9 @@ t_pattern	pattern(void);
 
 t_color		color_at_checker(t_pattern pattern, t_shape *shape, t_tuple point);
 t_color		color_at_texture(t_pattern pattern, t_shape *shape, t_tuple point);
+
+t_uv		uv_at_sphere(t_tuple point);
+t_uv		uv_at_plane(t_tuple point);
+t_uv		uv_at_cylinder(t_tuple point);
 
 #endif
