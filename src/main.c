@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 12:02:59 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/04 14:51:22 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/04 19:38:46 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int main(void)
 	t_shape		sphere;
 	t_shape		fl;
 	t_shape		wall;
+	t_shape		cyl;
 	t_camera	cam;
 	t_light		l;
 	t_light		l2;
@@ -39,6 +40,17 @@ int main(void)
 	// sphere.material.pattern.secondary = color(0, 1, 0);
 	// sphere.material.has_pattern = true;
 	sphere.material.color = color(1, 0.9, 0);
+
+	cyl = shape();
+	cyl.intersect = &intersect_cylinder;
+	cyl.normal_at = &normal_at_cylinder;
+	cyl.material.pattern.width = 10;
+	cyl.material.pattern.height = 10;
+	cyl.material.pattern.uv_at = uv_at_cylinder;
+	cyl.material.pattern.color_at = color_at_checker;
+	cyl.material.pattern.primary = color(0, 1, 0);
+	cyl.material.pattern.secondary = color(1, 1, 0);
+	cyl.material.has_pattern = true;
 
 	fl = shape();
 	fl.material.specular = 0;
@@ -62,13 +74,14 @@ int main(void)
 	add_transformation(&wall, rotation_x(M_PI / 2));
 	add_transformation(&wall, rotation_y(M_PI / 4));
 	add_transformation(&wall, translation(0, 0, 5));
-	
+
 	l = light(point(-10, 10, -10), color(1, 1, 1), 0.7);
 	l2 = light(point(5, 2, -10), color(1, 1, 1), 0.3);
 
 	world_add_shape(&w, sphere);
 	world_add_shape(&w, fl);
 	world_add_shape(&w, wall);
+	world_add_shape(&w, cyl);
 	world_add_light(&w, l);
 	world_add_light(&w, l2);
 
@@ -76,6 +89,6 @@ int main(void)
 	cam_set_transform(&cam, view_transform(point(0, 1, -5), point(0, 1, 0), vector(0, 1, 0)));
 	img = render(cam, w);
 	canvas_export_ppm(img, "scene.ppm");
-	
+
 	return 0;
 }
