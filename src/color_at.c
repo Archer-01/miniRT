@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_at.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 19:36:45 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/03 21:31:56 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/04 17:50:18 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ t_color	color_at_checker(t_pattern pattern, t_shape *shape, t_tuple point)
 
 	object_point = matrix_mult_tuple(shape_inverse_transform(shape), point);
 	uv = pattern.uv_at(object_point);
-	x = (int)(uv.u * pattern.width);
-	y = (int)(uv.v * pattern.height);
+	x = floor(uv.u * pattern.width);
+	y = floor(uv.v * pattern.height);
 	if ((x + y) % 2 == 0)
 	{
 		return (pattern.primary);
