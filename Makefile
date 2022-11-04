@@ -52,7 +52,8 @@ matrix_transformations_INC	:= $(matrix_INC)
 normal_at_INC				:= $(shape_INC)
 world_INC					:= world.h $(shape_INC) $(light_INC) $(color_INC)
 world_utils					:= $(world_INC)
-
+camera_INC					:= $(matrix_INC) $(ray_INC) $(canvas_INC) $(world_INC)
+render_INC					:= $(camera_INC)
 
 # ****************************** Make Arguments ********************************
 ifdef DEBUG
