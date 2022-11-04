@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 10:38:41 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/04 11:18:47 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/04 12:42:55 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ void		cam_set_transform(t_camera *cam, t_matrix transform);
 
 t_ray		ray_for_pixel(t_camera cam, uint16_t px, uint16_t py);
 t_canvas	render(t_camera cam, t_world world);
+t_matrix	view_transform(t_tuple from, t_tuple to, t_tuple up);
 
 #endif

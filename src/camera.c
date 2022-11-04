@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 10:44:58 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/04 11:11:47 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/04 12:01:05 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,30 @@ t_ray	ray_for_pixel(t_camera cam, uint16_t px, uint16_t py)
 	direction = tuple_sub(pixel, origin);
 	direction = tuple_normalize(direction);
 	return (ray(origin, direction));
+}
+
+t_matrix	view_transform(t_tuple from, t_tuple to, t_tuple up)
+{
+	t_matrix	orientation;
+	t_matrix	view;
+	t_tuple		forward;
+	t_tuple		left;
+	t_tuple		true_up;
+
+	forward = tuple_sub(to, from);
+	forward = tuple_normalize(forward);
+	left = tuple_cross(forward, tuple_normalize(up));
+	true_up = tuple_cross(left, forward);
+	orientation = matrix();
+	orientation.data[0][0] = left.x;
+	orientation.data[0][1] = left.y;
+	orientation.data[0][2] = left.z;
+	orientation.data[1][0] = true_up.x;
+	orientation.data[1][1] = true_up.y;
+	orientation.data[1][2] = true_up.z;
+	orientation.data[2][0] = -forward.x;
+	orientation.data[2][1] = -forward.y;
+	orientation.data[2][2] = -forward.z;
+	view = matrix_mult(orientation, translation(-from.x, -from.y, -from.z));
+	return (view);
 }
