@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 21:17:28 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/02 20:07:27 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/04 12:37:14 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,24 +47,22 @@ static void	matrix_nullify_non_pivot(t_matrix *m, t_matrix *result, uint8_t col)
 	uint8_t	j;
 	float	coeff;
 
-	row = 0;
-	while (row < 4)
+	row = -1;
+	while (++row < 4)
 	{
 		if (row == col)
 			continue ;
 		coeff = m->data[row][col] / m->data[col][col];
 		if (!float_eq(coeff, 0))
 		{
-			j = 0;
-			while (j < 4)
+			j = -1;
+			while (++j < 4)
 			{
 				m->data[row][j] -= coeff * m->data[col][j];
 				result->data[row][j] -= coeff * result->data[col][j];
-				++j;
 			}
 			m->data[row][col] = 0;
 		}
-		++row;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 11:12:06 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/04 11:26:18 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/04 12:41:34 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	*pthread_render(void *arg)
 		{
 			ray = ray_for_pixel(data->cam, x, y);
 			c = color_at(data->w, ray);
-			data->image->data[x][y] = c;
+			data->image->data[y][x] = c;
 			x++;
 		}
 		y++;
@@ -53,6 +53,12 @@ t_canvas	render(t_camera cam, t_world w)
 		data[i].image = &image;
 		data[i].id = i;
 		pthread_create(&threads[i], NULL, pthread_render, &data[i]);
+		++i;
+	}
+	i = 0;
+	while (i < THREAD_COUNT)
+	{
+		pthread_join(threads[i], NULL);
 		++i;
 	}
 	return (image);

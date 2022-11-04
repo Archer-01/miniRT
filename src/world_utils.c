@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 09:42:04 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/04 09:42:42 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/04 12:23:17 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_intersections	world_intersect(t_world w, t_ray r)
 	u_int16_t		j;
 
 	i = 0;
+	xs = intersections();
 	while (i < w.shape_count)
 	{
 		x = w.shapes[i].intersect(&w.shapes[i], r);
@@ -47,6 +48,7 @@ t_color	shade_hit(t_world w, t_computations comps)
 	{
 		shadowed = is_shadowed(w, comps.over_point, w.lights[i]);
 		c = color_add(c, lighting(w.lights[i], comps, shadowed, w.ambient));
+		++i;
 	}
 	return (c);
 }

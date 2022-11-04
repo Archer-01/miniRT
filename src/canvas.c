@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   canvas.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:45:35 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/01 18:42:42 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/04 12:15:19 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,10 @@ void	canvas_export_ppm(t_canvas canvas, char const *filename)
 				c255(canvas.data[i][j].red), \
 				c255(canvas.data[i][j].green), \
 				c255(canvas.data[i][j].blue));
+			++j;
 		}
 		ft_fprintf(fd, "\n");
+		++i;
 	}
 	close(fd);
 }

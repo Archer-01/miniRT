@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   normal_at.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 19:52:24 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/03 14:15:55 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/04 14:30:09 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ t_tuple	normal_at_plane(t_shape *plane, t_tuple world_point)
 	(void) world_point;
 	inverse = shape_inverse_transform(plane);
 	world_n = matrix_mult_tuple(matrix_transpose(inverse), vector(0, 1, 0));
-	return (vector(0, 1, 0));
+	world_n.w = 0;
+	return (world_n);
 }
 
 t_tuple	normal_at_cylinder(t_shape *cylinder, t_tuple world_point)
