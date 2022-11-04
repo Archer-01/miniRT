@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   world.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 21:37:36 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/03 21:42:01 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/04 09:29:54 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,11 @@ typedef struct s_world
 
 t_world			world(void);
 void			world_destroy(t_world world);
+void			world_add_shape(t_world *world, t_shape shape);
+void			world_add_light(t_world *world, t_light light);
 
 t_intersections	world_intersect(t_world world, t_ray ray);
-t_color			shade_hit(t_computations comps);
+t_color			shade_hit(t_world w, t_computations comps);
 t_color			color_at(t_world world, t_ray ray);
 bool			is_shadowed(t_world world, t_tuple point, t_light light);
 
