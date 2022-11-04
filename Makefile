@@ -30,19 +30,29 @@ OBJS	:= $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 LIBS	:= $(LIB_DIR)/MLX42/libmlx42.a $(LIB_DIR)/libft/libft.a
 
 # ***************************** Main Dependencies ******************************
-tuple_INC					:= tuple.h utils.h
-vector_INC					:= tuple.h utils.h
-color_INC					:= color.h utils.h
-canvas_INC					:= canvas.h utils.h
-matrix_INC					:= matrix.h utils.h
-matrix_inverse_INC			:= matrix.h utils.h
-matrix_transformations_INC	:= matrix.h utils.h
-ray_INC						:= ray.h utils.h
-intersection_INC			:= intersection.h utils.h
-intersections_INC			:= intersections.h utils.h
-material_INC				:= material.h utils.h
-normal_at_INC				:= shape.h utils.h
-shape_INC					:= shape.h utils.h
+utils_INC					:= utils.h
+color_INC					:= color.h
+tuple_INC					:= tuple.h $(utils_INC)
+vector_INC					:= $(tuple_INC)
+tuple_reflect_INC			:= $(tuple_INC)
+canvas_INC					:= canvas.h $(color_INC) $(utils_INC)
+pattern_INC					:= $(color_INC) $(canvas_INC) $(tuple_INC)
+uv_at						:= $(pattern_INC)
+matrix_INC					:= matrix.h $(tuple_INC) $(utils_INC)
+light_INC					:= light.h $(tuple_INC) $(color_INC)
+intersection_INC			:= intersection.h $(tuple_INC)
+intersections_INC			:= intersections.h $(utils_INC) $(intersection_INC)
+material_INC				:= material.h $(utils_INC) $(color_INC) $(pattern_INC) $(light_INC) $(intersections_INC)
+ray_INC						:= ray.h $(tuple_INC) $(matrix_INC)
+shape_INC					:= $(matrix_INC) $(material_INC) $(intersections_INC) $(ray_INC) $(tuple_INC)
+color_at_INC				:= $(shape_INC) $(pattern_INC)
+intersect_INC				:= $(shape_INC)
+matrix_inverse_INC			:= $(matrix_INC)
+matrix_transformations_INC	:= $(matrix_INC)
+normal_at_INC				:= $(shape_INC)
+world_INC					:= world.h $(shape_INC) $(light_INC) $(color_INC)
+world_utils					:= $(world_INC)
+
 
 # ****************************** Make Arguments ********************************
 ifdef DEBUG
