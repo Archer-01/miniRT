@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   world_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 09:42:04 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/04 12:23:17 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/04 17:03:22 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ t_color	color_at(t_world w, t_ray r)
 	else
 	{
 		comps = prepare_computations(*h, r);
+		return (shade_hit(w, comps));
 	}
-	return (shade_hit(w, comps));
 }
 
 bool	is_shadowed(t_world w, t_tuple p, t_light l)
@@ -85,13 +85,14 @@ bool	is_shadowed(t_world w, t_tuple p, t_light l)
 	r = ray(p, tuple_normalize(v));
 	xs = world_intersect(w, r);
 	h = hit(&xs);
-	free(xs.xs);
 	if (h != NULL && h->t < distance)
 	{
+		free(xs.xs);
 		return (true);
 	}
 	else
 	{
+		free(xs.xs);
 		return (false);
 	}
 }

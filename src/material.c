@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:20:57 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/03 21:33:16 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/04 17:22:39 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ t_color	lighting(t_light light, t_computations comps, bool shadowed, \
 	vectors[0] = tuple_normalize(tuple_sub(light.position, comps.over_point));
 	ldn_rde = tuple_dot(vectors[0], comps.normalv);
 	if (ldn_rde < 0)
-		return (ambient);
+		return (phong[0]);
 	phong[1] = color_mult(eff_color, comps.object->material.diffuse * ldn_rde);
 	vectors[1] = tuple_reflect(tuple_neg(vectors[0]), comps.normalv);
 	ldn_rde = tuple_dot(vectors[1], comps.eyev);
-	if (ldn_rde < 0)
+	if (ldn_rde <= 0)
 		return (color_add(phong[0], phong[1]));
 	phong[2] = color_mult(light.intensity, pow(ldn_rde, \
 		comps.object->material.shininess) * comps.object->material.specular);
