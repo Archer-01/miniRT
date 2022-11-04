@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:14:15 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/03 21:30:39 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/04 19:25:17 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_shape
 	t_normal_fun	normal_at;
 	float			min;
 	float			max;
+	bool			closed;
 }				t_shape;
 
 t_shape			shape(void);
