@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersections.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:58:24 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/02 18:11:16 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/04 09:07:03 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	intersections_add(t_intersections *xs, t_intersection i)
 	{
 		xs->capacity *= 2;
 		xs->xs = realloc(xs->xs, xs->capacity * sizeof(t_intersection));
-		if (xs == NULL)
+		if (xs->xs == NULL)
 		{
 			perror("intersections_add");
 			exit(EXIT_FAILURE);
