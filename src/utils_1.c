@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/01 17:09:26 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/05 09:55:52 by oaizab           ###   ########.fr       */
+/*   Created: 2022/11/05 17:17:58 by hhamza            #+#    #+#             */
+/*   Updated: 2022/11/05 17:19:34 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,22 @@ float	deg_to_rad(float deg)
 uint32_t	get_rgba(uint8_t r, uint8_t g, uint8_t b, uint8_t a)
 {
 	return ((r << 24) | (g << 16) | (b << 8) | a);
+}
+
+bool	check_float(char const *str)
+{
+	size_t	i;
+
+	i = 0;
+	if (str[i] == '-')
+		++i;
+	while (str[i] != '\0' && ft_isdigit(str[i]))
+		++i;
+	if (str[i] == '.')
+		++i;
+	while (str[i] != '\0' && ft_isdigit(str[i]))
+		++i;
+	if (str[i] == '\0')
+		return (true);
+	return (false);
 }

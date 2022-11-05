@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 16:57:45 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/05 09:55:42 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/05 19:06:23 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,13 @@ void		float_swap(float *a, float *b);
 float		deg_to_rad(float deg);
 
 uint32_t	get_rgba(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
+
+bool		check_float(char const *str);
+bool		check_int(char const *str);
+
+size_t		args_len(char **args);
+void		free_args(char **args);
+
+void		remove_newline(char *str);
 
 #endif
