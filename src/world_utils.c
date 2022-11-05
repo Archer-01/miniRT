@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   world_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 09:42:04 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/05 09:32:03 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/05 15:51:49 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ t_color	color_at(t_world *w, t_ray r)
 	h = hit(&xs);
 	if (h == NULL)
 	{
-		return (color(0, 0, 0));
+		return (free(xs.xs), color(0, 0, 0));
 	}
 	else
 	{
 		comps = prepare_computations(*h, r);
-		return (shade_hit(w, &comps));
+		return (free(xs.xs), shade_hit(w, &comps));
 	}
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   world.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 08:49:28 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/04 09:42:21 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/05 16:59:02 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	world_add_shape(t_world *w, t_shape s)
 			perror("world_add_shape");
 			exit(EXIT_FAILURE);
 		}
-	}	
+	}
 	w->shapes[w->shape_count] = s;
 	++(w->shape_count);
 }
@@ -68,7 +68,7 @@ void	world_add_light(t_world *w, t_light l)
 			perror("world_add_light");
 			exit(EXIT_FAILURE);
 		}
-	}	
+	}
 	w->lights[w->light_count] = l;
 	++(w->light_count);
 }
