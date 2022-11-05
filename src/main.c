@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 12:02:59 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/04 19:38:46 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/05 10:08:41 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,17 @@ int main(void)
 	// sphere.material.pattern.primary = color(1, 0, 0);
 	// sphere.material.pattern.secondary = color(0, 1, 0);
 	// sphere.material.has_pattern = true;
-	sphere.material.color = color(1, 0.9, 0);
+	sphere.material.color = color(1, 0.9, 1);
 
 	cyl = shape();
 	cyl.intersect = &intersect_cylinder;
 	cyl.normal_at = &normal_at_cylinder;
-	cyl.material.pattern.width = 10;
+	cyl.material.pattern.width = 40;
 	cyl.material.pattern.height = 10;
 	cyl.material.pattern.uv_at = uv_at_cylinder;
 	cyl.material.pattern.color_at = color_at_checker;
-	cyl.material.pattern.primary = color(0, 1, 0);
-	cyl.material.pattern.secondary = color(1, 1, 0);
+	cyl.material.pattern.primary = color(1, 1, 1);
+	cyl.material.pattern.secondary = color(0, 0, 0);
 	cyl.material.has_pattern = true;
 
 	fl = shape();
@@ -85,10 +85,19 @@ int main(void)
 	world_add_light(&w, l);
 	world_add_light(&w, l2);
 
-	cam = camera(1000, 500, M_PI / 3);
-	cam_set_transform(&cam, view_transform(point(0, 1, -5), point(0, 1, 0), vector(0, 1, 0)));
-	img = render(cam, w);
-	canvas_export_ppm(img, "scene.ppm");
+	cam = camera(WIN_WIDTH, WIN_HEIGHT, M_PI / 3);
+	t_matrix	vt = view_transform(point(0, 1, -5), point(0, 1, 0), vector(0, 1, 0));
+	cam_set_transform(&cam, &vt);
+	img = render(&cam, &w);
+	// canvas_export_ppm(img, "scene.ppm");
+
+	mlx_t 		*mlx;
+	mlx_image_t	*mlximg;
+
+	mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "miniRT", false);
+	mlximg = canvas_export_mlx(mlx, img);
+	mlx_image_to_window(mlx, mlximg, 0, 0);
+	mlx_loop(mlx);
 
 	return 0;
 }
