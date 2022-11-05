@@ -39,7 +39,9 @@ typedef struct s_pattern
 	t_canvas		canvas;
 }				t_pattern;
 
-t_pattern	pattern(void);
+t_pattern	checker(uint16_t width, uint16_t height, t_color *primary,
+				t_color *secondary);
+t_pattern	texture(t_canvas *canvas);
 
 t_color		color_at_checker(t_pattern pattern, t_shape *shape, t_tuple point);
 t_color		color_at_texture(t_pattern pattern, t_shape *shape, t_tuple point);
