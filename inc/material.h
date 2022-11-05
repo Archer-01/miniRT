@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   material.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:18:03 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/03 21:33:00 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/05 09:12:58 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_material
 }				t_material;
 
 t_material		material(void);
-t_color			lighting(t_light light, t_computations comps, bool shadowed, \
+t_color			lighting(t_light light, t_computations *comps, bool shadowed, \
 	t_color ambient);
 
 #endif

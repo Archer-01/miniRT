@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:30:42 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/02 20:16:54 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/05 09:12:18 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_computations
 
 typedef struct s_intersection
 {
-	double		t;
+	float		t;
 	t_shape		*object;
 }				t_intersection;
 

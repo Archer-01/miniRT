@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   material.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:20:57 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/04 17:22:39 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/05 09:24:01 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,32 +31,32 @@ t_material	material(void)
  * @note: ldn means light dot normal
  * @note: rde means reflect dot eye
  */
-t_color	lighting(t_light light, t_computations comps, bool shadowed, \
+t_color	lighting(t_light light, t_computations *comps, bool shadowed, \
 	t_color ambient)
 {
 	t_color		eff_color;
 	t_color		phong[3];
 	t_tuple		vectors[2];
-	float		ldn_rde;
+	float		ldnrde;
 
-	eff_color = comps.object->material.color;
-	if (comps.object->material.has_pattern)
-		eff_color = comps.object->material.pattern.color_at \
-			(comps.object->material.pattern, comps.object, comps.over_point);
-	eff_color = color_mult_color(eff_color, light.intensity);
-	phong[0] = color_mult_color(eff_color, ambient);
+	eff_color = comps->object->material.color;
+	if (comps->object->material.has_pattern)
+		eff_color = comps->object->material.pattern.color_at( \
+			&comps->object->material.pattern, comps->object, comps->over_point);
+	eff_color = color_mult_color(&eff_color, &light.intensity);
+	phong[0] = color_mult_color(&eff_color, &ambient);
 	if (shadowed)
 		return (phong[0]);
-	vectors[0] = tuple_normalize(tuple_sub(light.position, comps.over_point));
-	ldn_rde = tuple_dot(vectors[0], comps.normalv);
-	if (ldn_rde < 0)
+	vectors[0] = tuple_normalize(tuple_sub(light.position, comps->over_point));
+	ldnrde = tuple_dot(vectors[0], comps->normalv);
+	if (ldnrde < 0)
 		return (phong[0]);
-	phong[1] = color_mult(eff_color, comps.object->material.diffuse * ldn_rde);
-	vectors[1] = tuple_reflect(tuple_neg(vectors[0]), comps.normalv);
-	ldn_rde = tuple_dot(vectors[1], comps.eyev);
-	if (ldn_rde <= 0)
+	phong[1] = color_mult(&eff_color, comps->object->material.diffuse * ldnrde);
+	vectors[1] = tuple_reflect(tuple_neg(vectors[0]), comps->normalv);
+	ldnrde = tuple_dot(vectors[1], comps->eyev);
+	if (ldnrde <= 0)
 		return (color_add(phong[0], phong[1]));
-	phong[2] = color_mult(light.intensity, pow(ldn_rde, \
-		comps.object->material.shininess) * comps.object->material.specular);
+	phong[2] = color_mult(&light.intensity, pow(ldnrde, \
+		comps->object->material.shininess) * comps->object->material.specular);
 	return (color_add(color_add(phong[0], phong[1]), phong[2]));
 }

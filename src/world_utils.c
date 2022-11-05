@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   world_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 09:42:04 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/04 17:03:22 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/05 09:32:03 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "world.h"
 
-t_intersections	world_intersect(t_world w, t_ray r)
+t_intersections	world_intersect(t_world *w, t_ray r)
 {
 	t_intersections	xs;
 	t_intersections	x;
@@ -21,9 +21,9 @@ t_intersections	world_intersect(t_world w, t_ray r)
 
 	i = 0;
 	xs = intersections();
-	while (i < w.shape_count)
+	while (i < w->shape_count)
 	{
-		x = w.shapes[i].intersect(&w.shapes[i], r);
+		x = w->shapes[i].intersect(&w->shapes[i], r);
 		j = 0;
 		while (j < x.count)
 		{
@@ -36,7 +36,7 @@ t_intersections	world_intersect(t_world w, t_ray r)
 	return (xs);
 }
 
-t_color	shade_hit(t_world w, t_computations comps)
+t_color	shade_hit(t_world *w, t_computations *comps)
 {
 	uint16_t	i;
 	t_color		c;
@@ -44,16 +44,16 @@ t_color	shade_hit(t_world w, t_computations comps)
 
 	c = color(0, 0, 0);
 	i = 0;
-	while (i < w.light_count)
+	while (i < w->light_count)
 	{
-		shadowed = is_shadowed(w, comps.over_point, w.lights[i]);
-		c = color_add(c, lighting(w.lights[i], comps, shadowed, w.ambient));
+		shadowed = is_shadowed(w, comps->over_point, w->lights[i]);
+		c = color_add(c, lighting(w->lights[i], comps, shadowed, w->ambient));
 		++i;
 	}
 	return (c);
 }
 
-t_color	color_at(t_world w, t_ray r)
+t_color	color_at(t_world *w, t_ray r)
 {
 	t_intersections	xs;
 	t_intersection	*h;
@@ -68,11 +68,11 @@ t_color	color_at(t_world w, t_ray r)
 	else
 	{
 		comps = prepare_computations(*h, r);
-		return (shade_hit(w, comps));
+		return (shade_hit(w, &comps));
 	}
 }
 
-bool	is_shadowed(t_world w, t_tuple p, t_light l)
+bool	is_shadowed(t_world *w, t_tuple p, t_light l)
 {
 	t_tuple			v;
 	float			distance;

@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 10:44:58 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/04 12:01:05 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/05 09:20:21 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,42 +40,43 @@ t_camera	camera(uint16_t hsize, uint16_t vsize, float fov)
 	return (cam);
 }
 
-t_matrix	cam_get_inverse(t_camera cam)
+t_matrix	cam_get_inverse(t_camera *cam)
 {
-	if (!cam.inversed)
+	if (!cam->inversed)
 	{
-		cam.inv_transform = matrix_inverse(cam.transform);
-		cam.inversed = true;
+		cam->inv_transform = matrix_inverse(cam->transform);
+		cam->inversed = true;
 	}
-	return (cam.inv_transform);
+	return (cam->inv_transform);
 }
 
-void	cam_set_transform(t_camera *cam, t_matrix transform)
+void	cam_set_transform(t_camera *cam, t_matrix *transform)
 {
-	cam->transform = transform;
+	cam->transform = *transform;
 	cam->inversed = false;
 }
 
 /**
  * @note: offsets contain x and y respectively
  */
-t_ray	ray_for_pixel(t_camera cam, uint16_t px, uint16_t py)
+t_ray	ray_for_pixel(t_camera *cam, uint16_t px, uint16_t py)
 {
 	float		offsets[2];
 	t_tuple		world_point;
 	t_tuple		pixel;
-	t_tuple		origin;
-	t_tuple		direction;
+	t_ray		r;
+	t_matrix	inv;
 
-	offsets[0] = (px + 0.5) * cam.pixel_size;
-	offsets[1] = (py + 0.5) * cam.pixel_size;
+	offsets[0] = (px + 0.5) * cam->pixel_size;
+	offsets[1] = (py + 0.5) * cam->pixel_size;
 	world_point = \
-		point(cam.half_width - offsets[0], cam.half_height - offsets[1], -1);
-	pixel = matrix_mult_tuple(cam_get_inverse(cam), world_point);
-	origin = matrix_mult_tuple(cam_get_inverse(cam), point(0, 0, 0));
-	direction = tuple_sub(pixel, origin);
-	direction = tuple_normalize(direction);
-	return (ray(origin, direction));
+		point(cam->half_width - offsets[0], cam->half_height - offsets[1], -1);
+	inv = cam_get_inverse(cam);
+	pixel = matrix_mult_tuple(&inv, world_point);
+	r.origin = matrix_mult_tuple(&inv, point(0, 0, 0));
+	r.direction = tuple_sub(pixel, r.origin);
+	r.direction = tuple_normalize(r.direction);
+	return (r);
 }
 
 t_matrix	view_transform(t_tuple from, t_tuple to, t_tuple up)
@@ -84,22 +85,23 @@ t_matrix	view_transform(t_tuple from, t_tuple to, t_tuple up)
 	t_matrix	view;
 	t_tuple		forward;
 	t_tuple		left;
-	t_tuple		true_up;
+	t_matrix	trans;
 
 	forward = tuple_sub(to, from);
 	forward = tuple_normalize(forward);
 	left = tuple_cross(forward, tuple_normalize(up));
-	true_up = tuple_cross(left, forward);
+	up = tuple_cross(left, forward);
 	orientation = matrix();
 	orientation.data[0][0] = left.x;
 	orientation.data[0][1] = left.y;
 	orientation.data[0][2] = left.z;
-	orientation.data[1][0] = true_up.x;
-	orientation.data[1][1] = true_up.y;
-	orientation.data[1][2] = true_up.z;
+	orientation.data[1][0] = up.x;
+	orientation.data[1][1] = up.y;
+	orientation.data[1][2] = up.z;
 	orientation.data[2][0] = -forward.x;
 	orientation.data[2][1] = -forward.y;
 	orientation.data[2][2] = -forward.z;
-	view = matrix_mult(orientation, translation(-from.x, -from.y, -from.z));
+	trans = translation(-from.x, -from.y, -from.z);
+	view = matrix_mult(&orientation, &trans);
 	return (view);
 }

@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:02:06 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/02 20:08:00 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/05 09:28:25 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_ray	ray_transform(t_ray ray, t_matrix transform)
 {
 	t_ray	new_ray;
 
-	new_ray.origin = matrix_mult_tuple(transform, ray.origin);
-	new_ray.direction = matrix_mult_tuple(transform, ray.direction);
+	new_ray.origin = matrix_mult_tuple(&transform, ray.origin);
+	new_ray.direction = matrix_mult_tuple(&transform, ray.direction);
 	return (new_ray);
 }
