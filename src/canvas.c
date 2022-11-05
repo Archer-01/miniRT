@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:45:35 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/04 12:15:19 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/05 10:06:53 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,20 +87,48 @@ void	canvas_export_ppm(t_canvas canvas, char const *filename)
 		return ;
 	}
 	ft_fprintf(fd, "P3\n%d %d\n255\n", canvas.width, canvas.height);
+	i = -1;
+	while (++i < canvas.height)
+	{
+		j = -1;
+		while (++j < canvas.width)
+		{
+			ft_fprintf(fd, "%d %d %d ", \
+				c255(canvas.data[i][j].red), \
+				c255(canvas.data[i][j].green), \
+				c255(canvas.data[i][j].blue));
+		}
+		ft_fprintf(fd, "\n");
+	}
+	close(fd);
+}
+
+mlx_image_t	*canvas_export_mlx(mlx_t *mlx, t_canvas canvas)
+{
+	mlx_image_t	*img;
+	uint16_t	i;
+	uint16_t	j;
+
+	img = mlx_new_image(mlx, canvas.width, canvas.height);
+	if (img == NULL)
+	{
+		perror("canvas_export_mlx");
+		exit(EXIT_FAILURE);
+	}
 	i = 0;
 	while (i < canvas.height)
 	{
 		j = 0;
 		while (j < canvas.width)
 		{
-			ft_fprintf(fd, "%d %d %d ", \
+			mlx_put_pixel(img, j, i, get_rgba(\
 				c255(canvas.data[i][j].red), \
 				c255(canvas.data[i][j].green), \
-				c255(canvas.data[i][j].blue));
+				c255(canvas.data[i][j].blue), \
+				255));
 			++j;
 		}
-		ft_fprintf(fd, "\n");
 		++i;
 	}
-	close(fd);
+	return (img);
 }

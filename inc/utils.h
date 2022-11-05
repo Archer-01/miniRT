@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 16:57:45 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/04 11:17:10 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/05 09:55:42 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,11 @@
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
 
-bool	float_eq(float a, float b);
-void	float_swap(float *a, float *b);
+bool		float_eq(float a, float b);
+void		float_swap(float *a, float *b);
 
-float	deg_to_rad(float deg);
+float		deg_to_rad(float deg);
+
+uint32_t	get_rgba(uint8_t r, uint8_t g, uint8_t b, uint8_t a);
 
 #endif

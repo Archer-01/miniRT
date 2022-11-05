@@ -60,6 +60,10 @@ ifdef DEBUG
 CFLAGS += -g
 endif
 
+ifdef FAST
+CFLAGS += -O3
+endif
+
 # ******************************* Main Targets *********************************
 all: $(NAME)
 

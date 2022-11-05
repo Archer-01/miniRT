@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   canvas.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:15:41 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/03 21:36:42 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/05 09:52:26 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ void		canvas_destroy(t_canvas *canvas);
 
 void		canvas_export_ppm(t_canvas canvas, char const *filename);
 // TODO: Add import PPM
-// TODO: Add export MLX
+mlx_image_t	*canvas_export_mlx(mlx_t *mlx, t_canvas canvas);
 
 #endif

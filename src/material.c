@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:20:57 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/05 09:24:01 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/05 09:59:28 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_color	lighting(t_light light, t_computations *comps, bool shadowed, \
 
 	eff_color = comps->object->material.color;
 	if (comps->object->material.has_pattern)
-		eff_color = comps->object->material.pattern.color_at( \
+		eff_color = comps->object->material.pattern.color_at(\
 			&comps->object->material.pattern, comps->object, comps->over_point);
 	eff_color = color_mult_color(&eff_color, &light.intensity);
 	phong[0] = color_mult_color(&eff_color, &ambient);
