@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:30:23 by hhamza            #+#    #+#             */
-/*   Updated: 2022/08/06 12:03:27 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/05 18:48:11 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ double	ft_atof(char const *str)
 	double			result;
 
 	sign = 1;
+	if (str[0] == '-')
+		sign = -1;
 	dot = ft_strchr(str, '.');
 	if (dot == NULL)
 	{
@@ -68,10 +70,6 @@ double	ft_atof(char const *str)
 	}
 	*dot = '\0';
 	int_part = ft_atoi(str);
-	if (int_part < 0)
-	{
-		sign = -1;
-	}
 	frac_part = ft_atoi(dot + 1);
 	result = ft_abs(int_part);
 	result += (double) frac_part / ft_ten_power(ft_count_digits(frac_part));
