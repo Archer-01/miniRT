@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 12:02:59 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/06 09:42:22 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/06 10:22:38 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,29 +124,24 @@ int	main(void)
 {
 	int			fd;
 	t_color		ambient;
-	// t_camera	cam;
+	t_camera	cam;
 	char		*line;
-	// t_tuple		origin;
-	// t_matrix	inv;
+	t_tuple		origin;
+	t_matrix	inv;
 
-	// system("ls -Rl .");
-	if (access("test.rt", F_OK) == -1)
-	{
-		printf("Error: File not found or not readable\n");
-		return (1);
-	}
-	fd = open("test.rt", O_RDONLY);
-	perror("open");
+	fd = open("scenes/test.rt", O_RDONLY);
 	line = get_next_line(fd);
 	remove_newline(line);
 	ambient = parse_ambient(line);
 	printf("ambient: %f %f %f\n", ambient.red, ambient.green, ambient.blue);
-	// free(line);
-	// line = get_next_line(fd);
-	// cam = parse_camera(line);
-	// printf("cam: %f\n", cam.fov);
-	// inv = cam_get_inverse(&cam);
-	// origin = matrix_mult_tuple(&inv, point(0, 0, 0));
-	// printf("origin: %f %f %f\n", origin.x, origin.y, origin.z);
+	free(line);
+	line = get_next_line(fd);
+	remove_newline(line);
+	cam = parse_camera(line);
+	printf("cam: %f\n", cam.fov);
+	inv = cam_get_inverse(&cam);
+	origin = matrix_mult_tuple(&inv, point(0, 0, 0));
+	printf("origin: %f %f %f\n", origin.x, origin.y, origin.z);
+	free(line);
 	return (0);
 }
