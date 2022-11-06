@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 12:02:59 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/06 10:22:38 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/06 10:43:37 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ int	main(void)
 	char		*line;
 	t_tuple		origin;
 	t_matrix	inv;
+	t_light		l;
 
 	fd = open("scenes/test.rt", O_RDONLY);
 	line = get_next_line(fd);
@@ -135,6 +136,7 @@ int	main(void)
 	ambient = parse_ambient(line);
 	printf("ambient: %f %f %f\n", ambient.red, ambient.green, ambient.blue);
 	free(line);
+
 	line = get_next_line(fd);
 	remove_newline(line);
 	cam = parse_camera(line);
@@ -142,6 +144,13 @@ int	main(void)
 	inv = cam_get_inverse(&cam);
 	origin = matrix_mult_tuple(&inv, point(0, 0, 0));
 	printf("origin: %f %f %f\n", origin.x, origin.y, origin.z);
+	free(line);
+
+	line = get_next_line(fd);
+	remove_newline(line);
+	l = parse_light(line);
+	printf("light: %f %f %f\n", l.position.x, l.position.y, l.position.z);
+	printf("light: %f %f %f\n", l.intensity.red, l.intensity.green, l.intensity.blue);
 	free(line);
 	return (0);
 }
