@@ -6,24 +6,11 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 11:30:23 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/05 18:48:11 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/06 19:11:45 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static size_t	ft_count_digits(unsigned long num)
-{
-	size_t	count;
-
-	count = 0;
-	while (num != 0)
-	{
-		++count;
-		num /= 10;
-	}
-	return (count);
-}
 
 static unsigned long	ft_ten_power(unsigned long exp)
 {
@@ -72,6 +59,6 @@ double	ft_atof(char const *str)
 	int_part = ft_atoi(str);
 	frac_part = ft_atoi(dot + 1);
 	result = ft_abs(int_part);
-	result += (double) frac_part / ft_ten_power(ft_count_digits(frac_part));
+	result += (double) frac_part / ft_ten_power(ft_strlen(dot + 1));
 	return (sign * result);
 }
