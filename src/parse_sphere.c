@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 10:45:57 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/06 21:18:22 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/06 22:03:06 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ t_shape	parse_sphere(char const *line)
 	parse_radius(split, &sphere);
 	primary = parse_color(split[3], 1);
 	sphere.material.color = primary;
+	sphere.normal_at = normal_at_sphere;
+	sphere.intersect = intersect_sphere;
 	local_parse_phong(split, &sphere);
 	if (args_len(split) == 6)
 	{

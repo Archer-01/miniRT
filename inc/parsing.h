@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 17:03:41 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/06 21:07:19 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/06 21:33:57 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "main.h"
 
+void		parse_scene(char const *filename, t_world *w, t_camera *cam);
 t_world		parse_world(char const *filename);
 
 float		parse_ratio(char *ratio_str);

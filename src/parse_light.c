@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 10:39:36 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/06 10:44:55 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/06 21:47:12 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ t_light	parse_light(char const *line)
 	ratio = parse_ratio(split[2]);
 	intensity = parse_color(split[3], 1);
 	l = light(position, intensity, ratio);
+	free_args(split);
 	return (l);
 }
