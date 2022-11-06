@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 18:44:26 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/05 09:16:22 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/06 19:55:02 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,7 @@ t_matrix	scaling(float x, float y, float z);
 t_matrix	rotation_x(float angle);
 t_matrix	rotation_y(float angle);
 t_matrix	rotation_z(float angle);
+
+t_matrix	orientation(t_tuple orient);
 
 #endif
