@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 17:45:35 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/05 12:20:13 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/06 09:21:55 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,10 +111,7 @@ mlx_image_t	*canvas_export_mlx(mlx_t *mlx, t_canvas canvas)
 
 	img = mlx_new_image(mlx, canvas.width, canvas.height);
 	if (img == NULL)
-	{
-		perror("canvas_export_mlx");
-		exit(EXIT_FAILURE);
-	}
+		(perror("canvas_export_mlx"), exit(EXIT_FAILURE));
 	i = 0;
 	while (i < canvas.height)
 	{

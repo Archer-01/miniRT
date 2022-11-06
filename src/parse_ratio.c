@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   parse_ratio.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/05 17:03:41 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/06 09:12:10 by hhamza           ###   ########.fr       */
+/*   Created: 2022/11/06 09:11:40 by hhamza            #+#    #+#             */
+/*   Updated: 2022/11/06 09:11:54 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#include "parsing.h"
 
-# include "main.h"
+float	parse_ratio(char *ratio_str)
+{
+	float	ratio;
 
-t_world		parse_world(char const *filename);
-
-float		parse_ratio(char *ratio_str);
-t_color		parse_color(char *color_str, float ratio);
-t_tuple		parse_tuple(char const *line);
-t_color		parse_ambient(char const *line);
-t_camera	parse_camera(char const *line);
-
-#endif
+	if (check_float(ratio_str) == false)
+	{
+		ft_fprintf(STDERR_FILENO, "Parsing error: invalid ambient intensity\n");
+		exit(EXIT_FAILURE);
+	}
+	ratio = ft_atof(ratio_str);
+	if (ratio < 0 || ratio > 1)
+	{
+		ft_fprintf(STDERR_FILENO, "Parsing error: invalid ambient ratio\n");
+		exit(EXIT_FAILURE);
+	}
+	return (ratio);
+}
