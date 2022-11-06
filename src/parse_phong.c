@@ -1,40 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_tuple.c                                      :+:      :+:    :+:   */
+/*   parse_phong.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/06 09:07:01 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/06 11:12:44 by hhamza           ###   ########.fr       */
+/*   Created: 2022/11/06 11:01:59 by hhamza            #+#    #+#             */
+/*   Updated: 2022/11/06 11:29:49 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-float	parse_float(char const *str)
+t_tuple	parse_phong(char const *line)
 {
-	if (check_float(str) == false)
-	{
-		ft_fprintf(STDERR_FILENO, "Parsing error: invalid float\n");
-		exit(EXIT_FAILURE);
-	}
-	return (ft_atof(str));
-}
-
-t_tuple	parse_tuple(char const *line)
-{
-	t_tuple	res;
 	char	**split;
+	t_tuple	phong;
 
 	split = ft_split(line, ',');
 	if (split == NULL)
-		(perror("parse_tuple"), exit(EXIT_FAILURE));
+		(perror("parse_phong"), exit(EXIT_FAILURE));
 	if (args_len(split) != 3)
-		(ft_fprintf(2, "Parsing error: invalid camera coordinates\n"), exit(1));
-	res.x = parse_float(split[0]);
-	res.y = parse_float(split[1]);
-	res.z = parse_float(split[2]);
-	free_args(split);
-	return (res);
+	{
+		ft_fprintf(STDERR_FILENO, "Parsing error: invalid phong data\n");
+		exit(EXIT_FAILURE);
+	}
+	phong.x = parse_int(split[0]);
+	if (phong.x < 10 || phong.x > 200)
+	{
+		ft_fprintf(STDERR_FILENO, "Parsing error: invalid shininess\n");
+		exit(EXIT_FAILURE);
+	}
+	phong.y = parse_ratio(split[1]);
+	phong.z = parse_ratio(split[2]);
+	free(split);
+	return (phong);
 }

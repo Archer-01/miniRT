@@ -6,13 +6,13 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 09:07:42 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/06 10:21:32 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/06 11:23:28 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-static float	parse_color_component(char *color_str, float ratio)
+float	parse_color_component(char *color_str, float ratio)
 {
 	float	component;
 
