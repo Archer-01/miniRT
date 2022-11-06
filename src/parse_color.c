@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 09:07:42 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/06 09:22:37 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/06 10:21:32 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ t_color	parse_color(char *color_str, float ratio)
 		ft_fprintf(STDERR_FILENO, "Parsing error: invalid ambient color\n");
 		exit(EXIT_FAILURE);
 	}
-	res.red = parse_color_component(split[1], ratio);
-	res.green = parse_color_component(split[2], ratio);
-	res.blue = parse_color_component(split[3], ratio);
+	res.red = parse_color_component(split[0], ratio);
+	res.green = parse_color_component(split[1], ratio);
+	res.blue = parse_color_component(split[2], ratio);
 	free_args(split);
 	return (res);
 }
