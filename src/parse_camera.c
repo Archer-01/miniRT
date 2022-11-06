@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_camera.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 19:01:11 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/06 10:32:44 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/06 22:17:50 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static float	parse_fov(char *fov_str)
 		ft_fprintf(2, "Parsing error: fov must be between 0 and 180\n");
 		exit(EXIT_FAILURE);
 	}
-	return (fov);
+	return (deg_to_rad(fov));
 }
 
 t_camera	parse_camera(char const *line)
