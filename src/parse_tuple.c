@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 09:07:01 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/06 11:12:44 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/07 11:47:10 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_tuple	parse_tuple(char const *line)
 	res.x = parse_float(split[0]);
 	res.y = parse_float(split[1]);
 	res.z = parse_float(split[2]);
+	res.w = 1;
 	free_args(split);
 	return (res);
 }
