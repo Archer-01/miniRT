@@ -6,14 +6,28 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 12:02:59 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/07 23:24:47 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/07 23:29:15 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 #include "parsing.h"
 
-int	main(void)
+static void	check_args(int argc, char **argv)
+{
+	if (argc != 2)
+	{
+		ft_fprintf(STDERR_FILENO, "Usage: %s <scene_file>\n", argv[0]);
+		exit(EXIT_FAILURE);
+	}
+	if (ft_strncmp(argv[1] + ft_strlen(argv[1]) - 3, ".rt", 3) != 0)
+	{
+		ft_fprintf(STDERR_FILENO, "Error: invalid file extension\n");
+		exit(EXIT_FAILURE);
+	}
+}
+
+int	main(int argc, char **argv)
 {
 	t_world		w;
 	t_camera	cam;
@@ -21,7 +35,8 @@ int	main(void)
 	mlx_t		*mlx;
 	mlx_image_t	*mlximg;
 
-	parse_scene("scenes/spheres.rt", &w, &cam);
+	check_args(argc, argv);
+	parse_scene(argv[1], &w, &cam);
 	img = render(&cam, &w);
 	world_destroy(w);
 	mlx = mlx_init(WIN_WIDTH, WIN_HEIGHT, "miniRT", false);
