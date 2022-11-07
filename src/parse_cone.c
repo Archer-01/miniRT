@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 19:42:34 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/07 19:52:13 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/07 22:01:37 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,23 @@ static void	parse_height(char **split, t_shape *cn)
 	add_transformation(cn, scaling(1, height, 1));
 }
 
-t_shape		parse_cone(char const *line)
+static void	add_pattern(char **split, t_shape *cone, t_color primary)
+{
+	if (args_len(split) == 8)
+	{
+		if (ft_strncmp(split[7], "ch:", 3) == 0)
+			parse_pattern(split[7], cone, primary, uv_at_cylinder_ch);
+		else if (ft_strncmp(split[7], "tx:", 3) == 0)
+			parse_pattern(split[7], cone, primary, uv_at_cylinder_tx);
+	}
+}
+
+t_shape	parse_cone(char const *line)
 {
 	t_shape	cone;
 	char	**split;
 	t_tuple	center;
-	t_tuple orient;
+	t_tuple	orient;
 	t_color	primary;
 
 	split_and_check(&split, (char *)line);
@@ -75,12 +86,6 @@ t_shape		parse_cone(char const *line)
 	add_transformation(&cone, orientation(orient));
 	add_transformation(&cone, rotation_y(M_PI));
 	add_transformation(&cone, translation(center.x, center.y, center.z));
-	if (args_len(split) == 8)
-	{
-		if (ft_strncmp(split[7], "ch:", 3) == 0)
-			parse_pattern(split[7], &cone, primary, uv_at_cylinder_ch);
-		else if (ft_strncmp(split[7], "tx:", 3) == 0)
-			parse_pattern(split[7], &cone, primary, uv_at_cylinder_tx);
-	}
+	add_pattern(split, &cone, primary);
 	return (free_args(split), cone);
 }

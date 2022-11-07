@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 19:30:24 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/07 19:57:10 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/07 22:09:57 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,32 @@ static t_intersections	*intersect_caps(t_shape *s, t_ray r, \
 	return (xs);
 }
 
+t_intersections	intersect_side_cone(float *abc, t_ray r, t_shape *self, \
+	t_intersections *xs)
+{
+	float	t;
+	float	y;
+	float	delta;
+
+	delta = abc[1] * abc[1] - 4 * abc[0] * abc[2];
+	if (delta < 0)
+		return (intersections());
+	delta = sqrt(delta);
+	t = (-abc[1] - delta) / (2 * abc[0]);
+	y = r.origin.y + t * r.direction.y;
+	if (y >= self->min && y <= self->max)
+		intersections_add(xs, intersection(t, self));
+	t = (-abc[1] + delta) / (2 * abc[0]);
+	y = r.origin.y + t * r.direction.y;
+	if (y >= self->min && y <= self->max)
+		intersections_add(xs, intersection(t, self));
+	return (intersect_caps(self, r, xs), *xs);
+}
+
 t_intersections	intersect_cone(t_shape *self, t_ray r)
 {
 	t_intersections	xs;
 	float			abc[3];
-	float			dlta;
-	float			ty[2];
 
 	xs = intersections();
 	r = ray_transform(r, shape_inverse_transform(self));
@@ -57,17 +77,5 @@ t_intersections	intersect_cone(t_shape *self, t_ray r)
 		* r.origin.y;
 	if (float_eq(abc[0], 0))
 		intersections_add(&xs, intersection(-abc[2] / (2 * abc[1]), self));
-	dlta = abc[1] * abc[1] - 4 * abc[0] * abc[2];
-	if (dlta < 0)
-		return (intersections());
-	dlta = sqrt(dlta);
-	ty[0] = (-abc[1] - dlta) / (2 * abc[0]);
-	ty[1] = r.origin.y + ty[0] * r.direction.y;
-	if (ty[1] >= self->min && ty[1] <= self->max)
-		intersections_add(&xs, intersection(ty[0], self));
-	ty[0] = (-abc[1] + dlta) / (2 * abc[0]);
-	ty[1] = r.origin.y + ty[0] * r.direction.y;
-	if (ty[1] >= self->min && ty[1] <= self->max)
-		intersections_add(&xs, intersection(ty[0], self));
-	return (intersect_caps(self, r, &xs), xs);
+	return (intersect_side_cone(abc, r, self, &xs));
 }

@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:40:51 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/07 17:32:03 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/07 22:12:54 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,23 @@ static void	parse_height(char **split, t_shape *cyl)
 	add_transformation(cyl, scaling(1, height, 1));
 }
 
+static void	add_pattern(char **split, t_shape *cyl, t_color primary)
+{
+	if (args_len(split) == 8)
+	{
+		if (ft_strncmp(split[7], "ch:", 3) == 0)
+			parse_pattern(split[7], cyl, primary, uv_at_cylinder_ch);
+		else if (ft_strncmp(split[7], "tx:", 3) == 0)
+			parse_pattern(split[7], cyl, primary, uv_at_cylinder_tx);
+	}
+}
+
 t_shape	parse_cylinder(char const *line)
 {
 	t_shape	cyl;
 	char	**split;
 	t_tuple	center;
-	t_tuple orient;
+	t_tuple	orient;
 	t_color	primary;
 
 	split_and_check(&split, (char *)line);
@@ -68,12 +79,6 @@ t_shape	parse_cylinder(char const *line)
 	add_transformation(&cyl, orientation(orient));
 	add_transformation(&cyl, rotation_y(M_PI));
 	add_transformation(&cyl, translation(center.x, center.y, center.z));
-	if (args_len(split) == 8)
-	{
-		if (ft_strncmp(split[7], "ch:", 3) == 0)
-			parse_pattern(split[7], &cyl, primary, uv_at_cylinder_ch);
-		else if (ft_strncmp(split[7], "tx:", 3) == 0)
-			parse_pattern(split[7], &cyl, primary, uv_at_cylinder_tx);
-	}
+	add_pattern(split, &cyl, primary);
 	return (free_args(split), cyl);
 }
