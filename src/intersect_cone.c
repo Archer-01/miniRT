@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersect_cone.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 19:30:24 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/07 22:09:57 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/07 23:23:17 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ t_intersections	intersect_side_cone(float *abc, t_ray r, t_shape *self, \
 
 	delta = abc[1] * abc[1] - 4 * abc[0] * abc[2];
 	if (delta < 0)
-		return (intersections());
+		return (free(xs->xs), intersections());
 	delta = sqrt(delta);
 	t = (-abc[1] - delta) / (2 * abc[0]);
 	y = r.origin.y + t * r.direction.y;

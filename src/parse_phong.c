@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_phong.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 11:01:59 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/07 16:19:30 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/07 23:15:53 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static t_tuple	local_parse_phong(char const *line)
 	}
 	phong.y = parse_ratio(split[1]);
 	phong.z = parse_ratio(split[2]);
-	free(split);
+	free_args(split);
 	return (phong);
 }
 

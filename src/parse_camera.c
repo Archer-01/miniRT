@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_camera.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 19:01:11 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/06 22:17:50 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/07 23:15:17 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,5 @@ t_camera	parse_camera(char const *line)
 	}
 	cam = camera(WIN_WIDTH, WIN_HEIGHT, parse_fov(split[3]));
 	vt = view_transform(from, tuple_add(from, orientation), vector(0, 1, 0));
-	return (cam_set_transform(&cam, &vt), cam);
+	return (free_args(split), cam_set_transform(&cam, &vt), cam);
 }

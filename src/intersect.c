@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 20:36:59 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/04 19:34:11 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/07 23:22:20 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ t_intersections	intersect_cylinder(t_shape *self, t_ray r)
 	abc[2] = r.origin.x * r.origin.x + r.origin.z * r.origin.z - 1;
 	dlta = abc[1] * abc[1] - 4 * abc[0] * abc[2];
 	if (dlta < 0)
-		return (intersections());
+		return (free(xs.xs), intersections());
 	dlta = sqrt(dlta);
 	ty[0] = (-abc[1] - dlta) / (2 * abc[0]);
 	ty[1] = r.origin.y + ty[0] * r.direction.y;

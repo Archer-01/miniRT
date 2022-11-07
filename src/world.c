@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 08:49:28 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/05 16:59:02 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/07 23:14:14 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,17 @@ t_world	world(void)
 
 void	world_destroy(t_world w)
 {
+	uint16_t	i;
+
 	free(w.lights);
+	i = 0;
+	while (i < w.shape_count)
+	{
+		if (w.shapes[i].material.has_pattern \
+			&& w.shapes[i].material.pattern.color_at == color_at_texture)
+			canvas_destroy(&w.shapes[i].material.pattern.canvas);
+		++i;
+	}
 	free(w.shapes);
 }
 
