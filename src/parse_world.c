@@ -25,7 +25,7 @@ t_world	parse_world(char const *filename)
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		if (line[0] != '\n')
+		if (line[0] != '\n' && line[0] != '#')
 		{
 			remove_newline(line);
 			if (line[0] == 'L')

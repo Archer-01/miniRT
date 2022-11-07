@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 21:33:20 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/06 21:53:31 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/07 10:36:59 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	parse_scene(char const *filename, t_world *w, t_camera *cam)
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		if (line[0] != '\n')
+		if (line[0] != '\n' && line[0] != '#')
 		{
 			remove_newline(line);
 			if (line[0] == 'C')
