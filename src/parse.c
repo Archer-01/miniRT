@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 21:33:20 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/07 10:36:59 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/07 11:37:59 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	parse_scene(char const *filename, t_world *w, t_camera *cam)
 	int		fd;
 	char	*line;
 
-	*w = parse_world(filename);
+	*w = world();
+	parse_world(filename, w);
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 	{

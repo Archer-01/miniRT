@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 17:03:41 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/06 21:33:57 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/07 11:37:37 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "main.h"
 
 void		parse_scene(char const *filename, t_world *w, t_camera *cam);
-t_world		parse_world(char const *filename);
+void		parse_world(char const *filename, t_world *w);
 
 float		parse_ratio(char *ratio_str);
 float		parse_color_component(char *color_str, float ratio);
@@ -31,5 +31,7 @@ t_shape		parse_sphere(char const *line);
 t_tuple		parse_phong(char const *line);
 t_pattern	parse_checker(char const *line, t_color primary);
 t_pattern	parse_texture(char const *line);
+void		parse_pattern(char const *str, t_shape *shape, t_color primary, \
+	t_uv_at_fun uv_at_f);
 
 #endif

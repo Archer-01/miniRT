@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_sphere.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 10:45:57 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/06 22:31:42 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/07 11:33:19 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,6 @@ t_shape	parse_sphere(char const *line)
 	sphere.intersect = intersect_sphere;
 	local_parse_phong(split, &sphere);
 	if (args_len(split) == 6)
-	{
-		sphere.material.has_pattern = true;
-		if (ft_strncmp(split[5], "ch:", 3) == 0)
-			sphere.material.pattern = parse_checker(&split[5][3], primary);
-		else if (ft_strncmp(split[5], "tx:", 3) == 0)
-			sphere.material.pattern = parse_texture(&split[5][3]);
-		else
-			(ft_fprintf(2, "Parsing error: invalid pattern\n"), exit(1));
-		sphere.material.pattern.uv_at = &uv_at_sphere;
-	}
+		parse_pattern(split[5], &sphere, primary, uv_at_sphere);
 	return (free_args(split), sphere);
 }
