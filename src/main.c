@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 12:02:59 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/07 23:29:15 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/07 23:33:29 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,17 @@ static void	check_args(int argc, char **argv)
 	}
 }
 
+static void	hook(void *param)
+{
+	mlx_t	*mlx;
+
+	mlx = param;
+	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
+	{
+		mlx_close_window(mlx);
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_world		w;
@@ -43,6 +54,7 @@ int	main(int argc, char **argv)
 	mlximg = canvas_export_mlx(mlx, img);
 	canvas_destroy(&img);
 	mlx_image_to_window(mlx, mlximg, 0, 0);
+	mlx_loop_hook(mlx, hook, mlx);
 	mlx_loop(mlx);
 	mlx_terminate(mlx);
 	return (0);
