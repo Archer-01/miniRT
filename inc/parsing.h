@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 17:03:41 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/07 16:40:17 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/07 19:42:00 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ void		parse_pattern(char const *str, t_shape *shape, t_color primary, \
 	t_uv_at_fun uv_at_f);
 t_shape		parse_plane(char const *line);
 t_shape		parse_cylinder(char const *line);
+t_shape		parse_cone(char const *line);
 
 #endif

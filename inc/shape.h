@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shape.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 17:14:15 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/04 19:25:17 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/07 19:49:15 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void			add_transformation(t_shape *shape, t_matrix transformation);
 t_intersections	intersect_sphere(t_shape *self, t_ray ray);
 t_intersections	intersect_cylinder(t_shape *self, t_ray ray);
 t_intersections	intersect_plane(t_shape *self, t_ray ray);
-t_intersections	interesect_cone(t_shape *self, t_ray ray);
+t_intersections	intersect_cone(t_shape *self, t_ray ray);
 
 t_tuple			normal_at_sphere(t_shape *self, t_tuple point);
 t_tuple			normal_at_cylinder(t_shape *self, t_tuple point);

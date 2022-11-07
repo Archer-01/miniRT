@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:34:32 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/07 16:57:52 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/07 19:53:30 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	parse_world(char const *filename, t_world *w)
 				world_add_shape(w, parse_plane(line));
 			else if (line[0] == 'c' && line[1] == 'y')
 				world_add_shape(w, parse_cylinder(line));
+			else if (line[0] == 'c' && line[1] == 'n')
+				world_add_shape(w, parse_cone(line));
 			else if (line[0] != 'C')
 				(ft_fprintf(2, "Parsing error: invalid object\n"), exit(1));
 		}
