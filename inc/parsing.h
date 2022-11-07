@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 17:03:41 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/07 11:39:58 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/07 16:19:17 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_color		parse_ambient(char const *line);
 t_camera	parse_camera(char const *line);
 t_light		parse_light(char const *line);
 t_shape		parse_sphere(char const *line);
-t_tuple		parse_phong(char const *line);
+void		parse_phong(char *str, t_shape *shape);
 t_pattern	parse_checker(char const *line, t_color primary);
 t_pattern	parse_texture(char const *line);
 void		parse_pattern(char const *str, t_shape *shape, t_color primary, \

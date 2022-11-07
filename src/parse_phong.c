@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_phong.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 11:01:59 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/06 11:29:49 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/07 16:19:30 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-t_tuple	parse_phong(char const *line)
+static t_tuple	local_parse_phong(char const *line)
 {
 	char	**split;
 	t_tuple	phong;
@@ -35,4 +35,14 @@ t_tuple	parse_phong(char const *line)
 	phong.z = parse_ratio(split[2]);
 	free(split);
 	return (phong);
+}
+
+void	parse_phong(char *str, t_shape *shape)
+{
+	t_tuple	phong;
+
+	phong = local_parse_phong(str);
+	shape->material.shininess = phong.x;
+	shape->material.diffuse = phong.y;
+	shape->material.specular = phong.z;
 }

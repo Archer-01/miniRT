@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_sphere.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 10:45:57 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/07 11:53:04 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/07 16:10:06 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,6 @@ static void	parse_radius(char **split, t_shape *sphere)
 	add_transformation(sphere, scaling(radius, radius, radius));
 }
 
-static void	local_parse_phong(char *str, t_shape *sphere)
-{
-	t_tuple	phong;
-
-	phong = parse_phong(str);
-	sphere->material.shininess = phong.x;
-	sphere->material.diffuse = phong.y;
-	sphere->material.specular = phong.z;
-}
-
 t_shape	parse_sphere(char const *line)
 {
 	t_shape	sphere;
@@ -60,7 +50,7 @@ t_shape	parse_sphere(char const *line)
 	sphere.material.color = primary;
 	sphere.normal_at = normal_at_sphere;
 	sphere.intersect = intersect_sphere;
-	local_parse_phong(split[4], &sphere);
+	parse_phong(split[4], &sphere);
 	if (args_len(split) == 6)
 		parse_pattern(split[5], &sphere, primary, uv_at_sphere);
 	return (free_args(split), sphere);
