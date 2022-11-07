@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:41:26 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/07 16:21:56 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/07 17:33:02 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,11 @@ t_shape	parse_plane(char const *line)
 	pl.intersect = intersect_plane;
 	pl.normal_at = normal_at_plane;
 	if (args_len(split) == 6)
-		parse_pattern(split[5], &pl, primary, uv_at_plane);
+	{
+		if (ft_strncmp(split[5], "ch:", 3) == 0)
+			parse_pattern(split[5], &pl, primary, uv_at_plane_ch);
+		else if (ft_strncmp(split[5], "tx:", 3) == 0)
+			parse_pattern(split[5], &pl, primary, uv_at_plane_tx);
+	}
 	return (free_args(split), pl);
 }

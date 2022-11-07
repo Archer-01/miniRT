@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 19:52:24 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/05 09:28:14 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/07 17:14:33 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ t_tuple	normal_at_cylinder(t_shape *cylinder, t_tuple world_point)
 	{
 		object_normal = vector(0, 1, 0);
 	}
-	else if (dist < 1 && object_point.y <= cylinder->min - EPSILON)
+	else if (dist < 1 && object_point.y <= cylinder->min + EPSILON)
 	{
 		object_normal = vector(0, -1, 0);
 	}

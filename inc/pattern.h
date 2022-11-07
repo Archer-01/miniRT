@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 19:13:25 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/05 08:57:42 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/07 17:31:50 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ t_color		color_at_checker(t_pattern *pattern, t_shape *shape, t_tuple point);
 t_color		color_at_texture(t_pattern *pattern, t_shape *shape, t_tuple point);
 
 t_uv		uv_at_sphere(t_tuple point);
-t_uv		uv_at_plane(t_tuple point);
-t_uv		uv_at_cylinder(t_tuple point);
+t_uv		uv_at_plane_ch(t_tuple point);
+t_uv		uv_at_plane_tx(t_tuple point);
+t_uv		uv_at_cylinder_ch(t_tuple point);
+t_uv		uv_at_cylinder_tx(t_tuple point);
 
 #endif
