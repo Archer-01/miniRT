@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_at.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 19:36:45 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/05 13:49:00 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/07 13:18:09 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_color	color_at_texture(t_pattern *pattern, t_shape *shape, t_tuple point)
 	object_point = matrix_mult_tuple(&inv, point);
 	uv = pattern->uv_at(object_point);
 	uv.v = 1 - uv.v;
-	x = (uint16_t)(uv.u * (pattern->canvas.width - 1) + 0.5f);
-	y = (uint16_t)(uv.v * (pattern->canvas.height - 1) + 0.5f);
+	x = roundf(uv.u * (pattern->canvas.width - 1));
+	y = roundf(uv.v * (pattern->canvas.height - 1));
 	return (pattern->canvas.data[y][x]);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   uv_at.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 20:33:41 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/03 20:43:50 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/07 13:14:50 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ t_uv	uv_at_plane(t_tuple point)
 {
 	t_uv	uv;
 
-	uv.u = point.x - (int)(point.x);
-	uv.v = point.z - (int)(point.z);
+	uv.u = fabs(point.x) - (int)(fabs(point.x));
+	uv.v = fabs(point.z) - (int)(fabs(point.z));
 	return (uv);
 }
 
