@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 17:06:09 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/06 21:56:22 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/08 02:41:30 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ t_color	parse_ambient(char const *line)
 	if (split == NULL)
 		(perror("parse_ambient"), exit(EXIT_FAILURE));
 	if (args_len(split) != 3)
-		(ft_fprintf(2, "Parsing error: Invalid ambient data\n"), exit(1));
+		(ft_fprintf(2, "Error\nInvalid ambient data\n"), exit(1));
 	if (ft_strcmp(split[0], "A") != 0)
-		(ft_fprintf(2, "Parsing error: invalid ambient line\n"), exit(1));
+		(ft_fprintf(2, "Error\nInvalid ambient line\n"), exit(1));
 	ratio = parse_ratio(split[1]);
 	ambient = parse_color(split[2], ratio);
 	return (free_args(split), ambient);

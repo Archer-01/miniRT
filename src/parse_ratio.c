@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 09:11:40 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/06 09:11:54 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/08 02:45:55 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ float	parse_ratio(char *ratio_str)
 
 	if (check_float(ratio_str) == false)
 	{
-		ft_fprintf(STDERR_FILENO, "Parsing error: invalid ambient intensity\n");
+		ft_fprintf(STDERR_FILENO, "Error\ninvalid ambient intensity\n");
 		exit(EXIT_FAILURE);
 	}
 	ratio = ft_atof(ratio_str);
 	if (ratio < 0 || ratio > 1)
 	{
-		ft_fprintf(STDERR_FILENO, "Parsing error: invalid ambient ratio\n");
+		ft_fprintf(STDERR_FILENO, "Error\ninvalid ambient ratio\n");
 		exit(EXIT_FAILURE);
 	}
 	return (ratio);

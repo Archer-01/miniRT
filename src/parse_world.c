@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_world.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:34:32 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/07 22:19:42 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/08 02:49:11 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	error_ambient(void)
 	}
 	else
 	{
-		ft_fprintf(2, "Parsing error: multiple ambient\n");
+		ft_fprintf(2, "Error\nMultiple ambient\n");
 		exit(1);
 	}
 }
@@ -46,7 +46,7 @@ static void	parse_lines(t_world *w, char *line)
 	else if (line[0] == 'c' && line[1] == 'n')
 		world_add_shape(w, parse_cone(line));
 	else if (line[0] != 'C')
-		(ft_fprintf(2, "Parsing error: invalid object\n"), exit(1));
+		(ft_fprintf(2, "Error\nInvalid object\n"), exit(1));
 }
 
 void	parse_world(char const *filename, t_world *w)

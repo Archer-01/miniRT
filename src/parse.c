@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 21:33:20 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/07 22:25:44 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/08 02:47:52 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	error_camera(int status)
 		}
 		else
 		{
-			ft_fprintf(2, "Parsing error: multiple camera\n");
+			ft_fprintf(2, "Error\nMultiple camera\n");
 			exit(1);
 		}
 	}
@@ -32,7 +32,7 @@ static void	error_camera(int status)
 	{
 		if (!error)
 		{
-			ft_fprintf(2, "Parsing error: no camera\n");
+			ft_fprintf(2, "Error\nNo camera\n");
 			exit(1);
 		}
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_cylinder.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:40:51 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/07 22:12:54 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/08 02:44:16 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static void	split_and_check(char ***split, char const *line)
 	if (*split == NULL)
 		(perror("parse_cylinder"), exit(EXIT_FAILURE));
 	if (args_len(*split) != 7 && args_len(*split) != 8)
-		(ft_fprintf(2, "Parsing error: invalid cylinder data\n"), exit(1));
+		(ft_fprintf(2, "Error\nInvalid cylinder data\n"), exit(1));
 	if (ft_strcmp((*split)[0], "cy") != 0)
-		(ft_fprintf(2, "Parsing error: invalid cylinder line\n"), exit(1));
+		(ft_fprintf(2, "Error\nInvalid cylinder line\n"), exit(1));
 }
 
 static void	parse_radius(char **split, t_shape *cyl)
@@ -29,7 +29,7 @@ static void	parse_radius(char **split, t_shape *cyl)
 
 	radius = parse_float(split[3]) / 2.0f;
 	if (radius <= EPSILON)
-		(ft_fprintf(2, "Parsing error: invalid cylinder radius\n"), exit(1));
+		(ft_fprintf(2, "Error\nInvalid cylinder radius\n"), exit(1));
 	add_transformation(cyl, scaling(radius, 1, radius));
 }
 
@@ -39,7 +39,7 @@ static void	parse_height(char **split, t_shape *cyl)
 
 	height = parse_float(split[4]);
 	if (height <= EPSILON)
-		(ft_fprintf(2, "Parsing error: invalid cylinder radius\n"), exit(1));
+		(ft_fprintf(2, "Error\nInvalid cylinder radius\n"), exit(1));
 	add_transformation(cyl, scaling(1, height, 1));
 }
 

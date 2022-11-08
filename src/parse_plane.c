@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_plane.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:41:26 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/08 00:29:35 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/08 02:45:40 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ t_shape	parse_plane(char const *line)
 	if (split == NULL)
 		(perror("parse_plane"), exit(EXIT_FAILURE));
 	if (args_len(split) != 5 && args_len(split) != 6)
-		(ft_fprintf(2, "Parsing error: invalid plane data\n"), exit(1));
+		(ft_fprintf(2, "Error\nInvalid plane data\n"), exit(1));
 	if (ft_strcmp(split[0], "pl") != 0)
-		(ft_fprintf(2, "Parsing error: invalid plane line\n"), exit(1));
+		(ft_fprintf(2, "Error\nInvalid plane line\n"), exit(1));
 	origin = parse_tuple(split[1]);
 	orient = parse_tuple(split[2]);
 	orient.w = 0;

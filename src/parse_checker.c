@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 11:20:04 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/06 21:07:37 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/08 02:42:55 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ t_pattern	parse_checker(char const *checker_str, t_color primary)
 		(perror("parse_checker"), exit(EXIT_FAILURE));
 	if (args_len(split) != 5)
 	{
-		ft_fprintf(STDERR_FILENO, "Parsing error: invalid checker data\n");
+		ft_fprintf(STDERR_FILENO, "Error\ninvalid checker data\n");
 		exit(EXIT_FAILURE);
 	}
 	w = parse_int(split[0]);
 	h = parse_int(split[1]);
 	if (w < 1 || h < 1)
-		(ft_fprintf(2, "Parsing error: invalid checker size\n"), exit(1));
+		(ft_fprintf(2, "Error\ninvalid checker size\n"), exit(1));
 	secondary.red = parse_color_component(split[2], 1);
 	secondary.green = parse_color_component(split[3], 1);
 	secondary.blue = parse_color_component(split[4], 1);

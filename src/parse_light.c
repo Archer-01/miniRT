@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 10:39:36 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/06 21:47:12 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/08 02:44:46 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ t_light	parse_light(char const *line)
 	if (split == NULL)
 		(perror("parse_light"), exit(EXIT_FAILURE));
 	if (args_len(split) != 4)
-		(ft_fprintf(2, "Parsing error: invalid light data"), exit(1));
+		(ft_fprintf(2, "Error\nInvalid light data"), exit(1));
 	if (ft_strcmp(split[0], "L") != 0)
-		(ft_fprintf(2, "Parsing error: invalid light line"), exit(1));
+		(ft_fprintf(2, "Error\nInvalid light line"), exit(1));
 	position = parse_tuple(split[1]);
 	ratio = parse_ratio(split[2]);
 	intensity = parse_color(split[3], 1);

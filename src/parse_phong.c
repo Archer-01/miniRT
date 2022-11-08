@@ -6,7 +6,7 @@
 /*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 11:01:59 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/07 23:15:53 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/08 02:48:47 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ static t_tuple	local_parse_phong(char const *line)
 		(perror("parse_phong"), exit(EXIT_FAILURE));
 	if (args_len(split) != 3)
 	{
-		ft_fprintf(STDERR_FILENO, "Parsing error: invalid phong data\n");
+		ft_fprintf(STDERR_FILENO, "Error\nInvalid phong data\n");
 		exit(EXIT_FAILURE);
 	}
 	phong.x = parse_int(split[0]);
 	if (phong.x < 10 || phong.x > 200)
 	{
-		ft_fprintf(STDERR_FILENO, "Parsing error: invalid shininess\n");
+		ft_fprintf(STDERR_FILENO, "Error\nInvalid shininess\n");
 		exit(EXIT_FAILURE);
 	}
 	phong.y = parse_ratio(split[1]);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_sphere.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 10:45:57 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/07 16:10:06 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/08 02:46:25 by hhamza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ static void	split_and_check(char ***split, char const *line)
 	if (*split == NULL)
 		(perror("parse_sphere"), exit(EXIT_FAILURE));
 	if (args_len(*split) != 5 && args_len(*split) != 6)
-		(ft_fprintf(2, "Parsing error: invalid sphere data\n"), exit(1));
+		(ft_fprintf(2, "Error\nInvalid sphere data\n"), exit(1));
 	if (ft_strcmp((*split)[0], "sp") != 0)
-		(ft_fprintf(2, "Parsing error: invalid sphere line\n"), exit(1));
+		(ft_fprintf(2, "Error\nInvalid sphere line\n"), exit(1));
 }
 
 static void	parse_radius(char **split, t_shape *sphere)
@@ -29,7 +29,7 @@ static void	parse_radius(char **split, t_shape *sphere)
 
 	radius = parse_float(split[2]) / 2.0f;
 	if (radius <= EPSILON)
-		(ft_fprintf(2, "Parsing error: invalid sphere radius\n"), exit(1));
+		(ft_fprintf(2, "Error\nInvalid sphere radius\n"), exit(1));
 	add_transformation(sphere, scaling(radius, radius, radius));
 }
 
