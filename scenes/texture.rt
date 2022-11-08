@@ -1,0 +1,27 @@
+# Ambient
+# Ratio		Color
+A   1    255,255,255
+
+# Camera
+# Position    Orientation Field-of-view
+C  0,2,-5     0,0,1         50
+
+# Lights
+#  Position  Ratio    Color
+L -10,10,-10   .7   255,255,255
+
+# Planes
+pl 0,0,0 0,1,0 62,109,156 200,1,0 tx:textures/ground.png
+
+pl 0,0,15 1,0,-1 62,109,156 200,1,0 tx:textures/bricks.png
+
+pl 0,0,15 -1,0,-1 62,109,156 200,1,0 tx:textures/bricks.png
+
+# Cones
+#    Position Orientation Diameter Height   Color    Phong        Texture
+cn     1.2,.5,5     0,1,0       1       2     255,0,0  200,1,0 tx:textures/stone.png
+
+# Spheres
+#   Position       Diameter     Color     Phong		      Texture
+sp    3,7.75,5.2     .5         0,0,0    200,1,1      tx:textures/gold.png
+sp     -1.5,2,4      1.75          0,0,0    200,1,0   tx:textures/onepiece.png
