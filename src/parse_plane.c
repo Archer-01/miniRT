@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_plane.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:41:26 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/08 02:45:40 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/08 20:24:15 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,6 @@ t_shape	parse_plane(char const *line)
 	orient.w = 0;
 	primary = parse_color(split[3], 1);
 	parse_phong(split[4], &pl);
-	if (tuple_magnitude(orient) != 1)
-		ft_fprintf(2, "Warning: invalid orientation, normalizing...\n");
 	add_transformation(&pl, orientation(orient));
 	add_transformation(&pl, translation(origin.x, origin.y, origin.z));
 	add_pattern(split, &pl, primary);

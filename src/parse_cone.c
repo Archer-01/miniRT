@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_cone.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 19:42:34 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/08 02:43:33 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/08 20:24:09 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ t_shape	parse_cone(char const *line)
 	cone.normal_at = normal_at_cone;
 	cone.intersect = intersect_cone;
 	parse_phong(split[6], &cone);
-	if (tuple_magnitude(orient) != 1)
-		ft_fprintf(2, "Warning: invalid orientation, normalizing...\n");
 	add_transformation(&cone, orientation(orient));
 	add_transformation(&cone, rotation_y(M_PI));
 	add_transformation(&cone, translation(center.x, center.y, center.z));

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_cylinder.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 16:40:51 by oaizab            #+#    #+#             */
-/*   Updated: 2022/11/08 02:44:16 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/08 20:23:46 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,6 @@ t_shape	parse_cylinder(char const *line)
 	cyl.normal_at = normal_at_cylinder;
 	cyl.intersect = intersect_cylinder;
 	parse_phong(split[6], &cyl);
-	if (tuple_magnitude(orient) != 1)
-		ft_fprintf(2, "Warning: invalid orientation, normalizing...\n");
 	add_transformation(&cyl, orientation(orient));
 	add_transformation(&cyl, rotation_y(M_PI));
 	add_transformation(&cyl, translation(center.x, center.y, center.z));

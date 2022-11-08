@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_camera.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 19:01:11 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/08 02:42:11 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/08 20:23:37 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,7 @@ t_camera	parse_camera(char const *line)
 	vec[0] = parse_tuple(split[2]);
 	vec[0].w = 0.0f;
 	if (tuple_magnitude(vec[0]) != 1.0f)
-	{
-		ft_fprintf(2, "Warning: invalid orientation, normalizing...\n");
 		vec[0] = tuple_normalize(vec[0]);
-	}
 	cam = camera(WIN_WIDTH, WIN_HEIGHT, parse_fov(split[3]));
 	vec[1] = vector(0, 1, 0);
 	if (float_eq(vec[0].x, 0) && float_eq(vec[0].z, 0))
