@@ -1,0 +1,22 @@
+# Ambient
+# Ratio		Color
+A   1    184,232,252
+
+# Camera
+# Position Orientation Field-of-view
+C  0,0,-5     0,0,1          50
+
+# Lights
+#  Position  Ratio    Color
+L -10,10,-10   .7   255,255,255
+
+# Planes
+pl 0,-1,0 0,1,0 255,255,255 200,1,0
+
+# Cones
+#    Position Orientation Diameter Height     Color    Phong        Texture
+cnh   0,-1,0    0,1,0       1      1.5   255,255,255 200,1,0 tx:textures/waffle.png
+
+# Spheres
+#   Position Diameter     Color     Phong		Texture
+sp  0,1.25,0    1      255,255,255 200,1,0 tx:textures/strawberry.png
