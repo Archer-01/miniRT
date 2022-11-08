@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_camera.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/05 19:01:11 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/07 23:15:17 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/08 01:18:43 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,31 +30,41 @@ static float	parse_fov(char *fov_str)
 	return (deg_to_rad(fov));
 }
 
-t_camera	parse_camera(char const *line)
+static void	check_camera(char **split)
 {
-	char		**split;
-	t_camera	cam;
-	t_tuple		from;
-	t_tuple		orientation;
-	t_matrix	vt;
-
-	split = ft_split(line, ' ');
 	if (split == NULL)
 		(perror("parse_camera"), exit(EXIT_FAILURE));
 	if (args_len(split) != 4)
 		(ft_fprintf(2, "Parsing error: invalid camera data"), exit(1));
 	if (ft_strcmp(split[0], "C") != 0)
 		(ft_fprintf(2, "Parsing error: invalid camera line"), exit(1));
+}
+
+/**
+ * @note: vec is 'orientation' and 'up' vectors
+ */
+t_camera	parse_camera(char const *line)
+{
+	char		**split;
+	t_camera	cam;
+	t_tuple		from;
+	t_tuple		vec[2];
+	t_matrix	vt;
+
+	split = ft_split(line, ' ');
+	check_camera(split);
 	from = parse_tuple(split[1]);
-	from.w = 1.0f;
-	orientation = parse_tuple(split[2]);
-	orientation.w = 0.0f;
-	if (tuple_magnitude(orientation) != 1.0f)
+	vec[0] = parse_tuple(split[2]);
+	vec[0].w = 0.0f;
+	if (tuple_magnitude(vec[0]) != 1.0f)
 	{
 		ft_fprintf(2, "Warning: invalid orientation, normalizing...\n");
-		orientation = tuple_normalize(orientation);
+		vec[0] = tuple_normalize(vec[0]);
 	}
 	cam = camera(WIN_WIDTH, WIN_HEIGHT, parse_fov(split[3]));
-	vt = view_transform(from, tuple_add(from, orientation), vector(0, 1, 0));
+	vec[1] = vector(0, 1, 0);
+	if (float_eq(vec[0].x, 0) && float_eq(vec[0].z, 0))
+		vec[1] = vector(0, 0, 1);
+	vt = view_transform(from, tuple_add(from, vec[0]), vec[1]);
 	return (free_args(split), cam_set_transform(&cam, &vt), cam);
 }

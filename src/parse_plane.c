@@ -6,7 +6,7 @@
 /*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:41:26 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/07 22:12:49 by oaizab           ###   ########.fr       */
+/*   Updated: 2022/11/08 00:29:35 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	add_pattern(char **split, t_shape *pl, t_color primary)
 {
 	pl->intersect = intersect_plane;
 	pl->normal_at = normal_at_plane;
+	pl->material.color = primary;
 	if (args_len(split) == 6)
 	{
 		if (ft_strncmp(split[5], "ch:", 3) == 0)
