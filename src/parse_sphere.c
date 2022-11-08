@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_sphere.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hhamza <hhamza@student.1337.ma>            +#+  +:+       +#+        */
+/*   By: oaizab <oaizab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 10:45:57 by hhamza            #+#    #+#             */
-/*   Updated: 2022/11/08 02:46:25 by hhamza           ###   ########.fr       */
+/*   Updated: 2022/11/08 22:03:29 by oaizab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ t_shape	parse_sphere(char const *line)
 	sphere = shape();
 	center = parse_tuple(split[1]);
 	add_transformation(&sphere, rotation_y(M_PI));
-	add_transformation(&sphere, translation(center.x, center.y, center.z));
 	parse_radius(split, &sphere);
+	add_transformation(&sphere, translation(center.x, center.y, center.z));
 	primary = parse_color(split[3], 1);
 	sphere.material.color = primary;
 	sphere.normal_at = normal_at_sphere;
