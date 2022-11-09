@@ -19,4 +19,4 @@ cnh   0,-1,0    0,1,0       1      1.5   255,255,255 200,1,0 tx:textures/waffle.
 
 # Spheres
 #   Position Diameter     Color     Phong		Texture
-sp  0,1.25,0    1      255,255,255 200,1,0 tx:textures/strawberry.png
+sp  0,.6,0    1      255,255,255 200,1,0 tx:textures/strawberry.png

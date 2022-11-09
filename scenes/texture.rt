@@ -23,5 +23,5 @@ cn     1.2,.5,5     0,1,0       1       2     255,0,0  200,1,0 tx:textures/stone
 
 # Spheres
 #   Position       Diameter     Color     Phong		      Texture
-sp    3,7.75,5.2     .5         0,0,0    200,1,1      tx:textures/gold.png
+sp    1.2,1.75,5.2     .5         0,0,0    200,1,1      tx:textures/gold.png
 sp     -1.5,2,4      1.75          0,0,0    200,1,0   tx:textures/onepiece.png
