@@ -19,7 +19,7 @@ LIB_DIR	:= lib
 # ****************************** Compiler Options ******************************
 CC		:= cc
 CFLAGS	:= -Wall -Wextra -Werror
-IFLAGS	:= -I $(INC_DIR) -I $(LIB_DIR)/MLX42/include -I $(LIB_DIR)/LIBFT/include
+IFLAGS	:= -I $(INC_DIR) -I $(LIB_DIR)/MLX42/include -I $(LIB_DIR)/libft/include
 LFLAGS	:= -L $(LIB_DIR)/libft -lft
 MFLAGS	:= -L $(LIB_DIR)/MLX42 -lmlx42 -L $(shell brew --prefix glfw)/lib -lglfw
 
