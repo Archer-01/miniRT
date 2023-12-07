@@ -134,4 +134,7 @@ fclean: clean
 
 re: fclean all
 
+.SILENT: $(NAME) $(OBJ_DIR) $(OBJS) clean fclean re all \
+	$(LIB_DIR)/MLX42/libmlx42.a \
+	$(LIB_DIR)/libft/libft.a
 .PHONY: all clean fclean re
