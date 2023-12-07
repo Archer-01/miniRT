@@ -20,8 +20,8 @@ LIB_DIR	:= lib
 CC		:= cc
 CFLAGS	:= -Wall -Wextra -Werror
 IFLAGS	:= -I $(INC_DIR) -I $(LIB_DIR)/MLX42/include -I $(LIB_DIR)/libft/include
-LFLAGS	:= -L $(LIB_DIR)/libft -lft
-MFLAGS	:= -L $(LIB_DIR)/MLX42 -lmlx42 -L $(shell brew --prefix glfw)/lib -lglfw
+LFLAGS	:= -L $(LIB_DIR)/libft -lft -lm
+MFLAGS	:= -L $(LIB_DIR)/MLX42 -lmlx42 -L $(shell brew --prefix glfw)/lib -lglfw -lm
 
 # ********************************* Main Files *********************************
 NAME	:= miniRT
@@ -93,7 +93,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBS)
 	echo "$(BLUE)Linking $(ITALIC)$(UNDERLINE)$(PURPLE)$(NAME)$(NC)"
-	$(CC) $(CFLAGS) $(LFLAGS) $(MFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) $^ -o $@ $(LFLAGS) $(MFLAGS)
 
 .SECONDEXPANSION:
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $$(addprefix $$(INC_DIR)/, $$($$*_INC)) | $(OBJ_DIR)
@@ -134,7 +134,4 @@ fclean: clean
 
 re: fclean all
 
-.SILENT: $(NAME) $(OBJ_DIR) $(OBJS) clean fclean re all \
-	$(LIB_DIR)/MLX42/libmlx42.a \
-	$(LIB_DIR)/libft/libft.a
 .PHONY: all clean fclean re
