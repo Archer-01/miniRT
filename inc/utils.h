@@ -26,8 +26,9 @@
 
 # define EPSILON 0.00001f
 # define THREAD_COUNT 4
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 1080
+
+# define WIN_WIDTH 1280
+# define WIN_HEIGHT 720
 
 bool		float_eq(float a, float b);
 void		float_swap(float *a, float *b);

@@ -16,12 +16,21 @@ OBJ_DIR	:= obj
 INC_DIR	:= inc
 LIB_DIR	:= lib
 
+# ********************************* Make flags *********************************
+MAKEFLAGS += --no-print-directory
+
 # ****************************** Compiler Options ******************************
 CC		:= cc
 CFLAGS	:= -Wall -Wextra -Werror
 IFLAGS	:= -I $(INC_DIR) -I $(LIB_DIR)/MLX42/include -I $(LIB_DIR)/libft/include
-LFLAGS	:= -L $(LIB_DIR)/libft -lft -lm
-MFLAGS	:= -L $(LIB_DIR)/MLX42 -lmlx42 -L $(shell brew --prefix glfw)/lib -lglfw -lm
+LFLAGS	:= -L $(LIB_DIR)/libft -lft
+MFLAGS	:= -L $(LIB_DIR)/MLX42 -lmlx42
+
+ifeq ($(shell uname), Darwin)
+MFLAGS += -L $(shell brew --prefix glfw)/lib -lglfw
+else # Linux
+MFLAGS += -lglfw -lm
+endif
 
 # ********************************* Main Files *********************************
 NAME	:= miniRT
